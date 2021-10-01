@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { getAllBlogs } from '../api/callerFunctions.js'
-import BlogCard from './BlogCard.js'
+import { getAllBlogs } from '../../api/callerFunctions.js'
+import BlogCard from '../blogs/BlogCard.js'
 
 const Home = () => {
   const [blogs, setBlogs] = useState([])
@@ -14,8 +14,8 @@ const Home = () => {
   console.log('this is the blogs state', blogs)
 
   return (
-    <>
-      <h1>GA // Overflow All Blogs 👇</h1>
+    <div className='main-content'>
+      <h1 className='latest-header'>latest</h1>
       <div className='blog-card-container'>
         {blogs.map((blog) => (
           <BlogCard
@@ -26,7 +26,7 @@ const Home = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   )
 }
 

@@ -9,36 +9,87 @@ body {
   background: linear-gradient(#eee, rgb(170, 170, 170));
   min-height: 100vh;
   overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+//* NAV
+
+nav {
+  padding: 1em;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  .nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 5rem;
+  }
+  .nav-links {
+    display: flex;
+    .search-bar {
+      display: flex;
+      position: relative;
+      margin-right: 1em;
+      input {
+        padding: 0.5em 1em;
+        border: none;
+        background: #f2e6ec;
+        box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+      }
+      i {
+        position: absolute;
+        top: 20%;
+        left: 5%;
+      }
+    }
+
+    .create-post {
+      margin-right: 1em;
+      box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+      background: #bc8df6;
+      padding: 0.2em 0.5em;
+      button {
+        padding: 0.5em 1em;
+        border: none;
+        background: #bc8df6;
+        font-size: 1em;
+      }
+    }
+    .my-profile {
+      margin-right: 1em;
+      box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+      background: #87e3cd;
+      padding: 0.2em 0.5em;
+      button {
+        padding: 0.5em 1em;
+        border: none;
+        background: #87e3cd;
+        font-size: 1em;
+      }
+    }
+  }
+}
+
+.nav-logo img {
+  width: 200px;
+}
+
+//* HOME
+
+.main-content {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blog-card-container {
-  place-content: center;
-  display: grid;
-  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
-  grid-template-columns: repeat(auto-fill, 250px);
-  height: 100%;
 }
 
 .blog-card {
-  background: rgb(138, 146, 207);
-  padding: 8rem 0 0;
-  max-width: 40ch;
-  color: rgb(5, 32, 37);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  background: linear-gradient(
-    rgb(223, 223, 230),
-    rgb(231, 231, 236) 20%,
-    rgb(153, 173, 172)
-  );
-  box-shadow: rgba(50, 50, 93, 0.25) 1px 3px 5px -2px,
-    rgba(0, 0, 0, 0.3) 1px 1px 3px -1px;
-  transition: box-shadow 0.5s ease;
-  &:hover {
-    // transform: scale(1.05);
-    box-shadow: rgb(47, 49, 48) 0px 20px 30px -10px;
-  }
+  background: lightblue;
 }
 
 .card-content {
