@@ -8,7 +8,6 @@ const BlogShow = () => {
 
   useEffect(() => {
     getBlog(id).then((data) => {
-      //   const data = blogInfo
       setBlogInfo(data)
     })
   }, [])
