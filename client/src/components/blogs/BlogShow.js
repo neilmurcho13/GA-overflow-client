@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getBlog } from '../../api/callerFunctions.js'
 
 const BlogShow = () => {
@@ -25,6 +25,8 @@ const BlogShow = () => {
         style={{ width: '300px', height: '300px' }}
       />
       <button>{blogInfo.tags}</button>
+      <br />
+      <Link to={'/'}>Home</Link>
     </div>
   )
 }
