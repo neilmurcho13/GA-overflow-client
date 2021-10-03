@@ -36,10 +36,15 @@ body {
 
 .blog-card {
   background: var(--bg-color);
+  -webkit-box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
 }
 
 .card-content {
   padding: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .card-content .card-title {
@@ -52,9 +57,36 @@ body {
   max-width: 100%;
 }
 
+.card-content .info-container {
+  margin-right: 20px;
+  position: relative;
+}
+
+.card-content .card-image {
+  -webkit-box-shadow: -4px 4px 0px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: -4px 4px 0px 0px rgba(0, 0, 0, 0.6);
+}
+
 .card-content .card-body {
   font-weight: 200;
   margin: 0.5em 0;
+}
+
+.card-content .comments-btn {
+  color: black;
+}
+
+.card-content .blog-card-btn {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 0.5em 1em;
+  border: none;
+  background: #bc8df6;
+  color: black;
+  font-size: 1em;
+  -webkit-box-shadow: -4px 4px 0px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: -4px 4px 0px 0px rgba(0, 0, 0, 0.6);
 }
 
 nav {
@@ -136,5 +168,11 @@ nav .nav-links .my-profile button {
 
 .nav-logo img {
   width: 200px;
+}
+
+.main-content {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 /*# sourceMappingURL=main.css.map */
