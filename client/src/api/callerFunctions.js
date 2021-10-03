@@ -11,3 +11,15 @@ export const getAllBlogs = async () => {
   console.log(data)
   return data
 }
+
+export const getBlog = async (id) => {
+  const options = {
+    method: 'GET',
+    url: `http://localhost:3000/api/blogs/${id}`
+  }
+
+  const { data } = await axios.request(options)
+
+  console.log(data)
+  return data
+}

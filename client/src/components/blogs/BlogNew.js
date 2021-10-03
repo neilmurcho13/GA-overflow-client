@@ -1,46 +1,45 @@
-import React from "react";
-import BlogBodyImageField from "../../fields/BlogBodyImageField.js";
-import Blogtagsfield from "../../fields/BlogTagsField.js";
-import Blogtagsfield from "../../fields/BlogTextField";
-import Blogtitlefield from "../../fields/BlogTitleField.js";
-import createBlogPost from "../../fields/BlogTitleField.js";
-import HeaderImageField from "../../fields/HeaderImageField.js";
-import SubHeadingField from "../../fields/SubHeadingField.js";
+import React from 'react'
+import BlogBodyImageField from '../../fields/BlogBodyImageField.js'
+import Blogtagsfield from '../../fields/BlogTagsField.js'
+import Blogtitlefield from '../../fields/BlogTitleField.js'
+import createBlogPost from '../../fields/BlogTitleField.js'
+import HeaderImageField from '../../fields/HeaderImageField.js'
+import SubHeadingField from '../../fields/SubHeadingField.js'
 
 const BlogNew = () => {
-  const history = useHistory();
+  const history = useHistory()
   const [state, setState] = React.useState({
-    formDate: {
-      title: "",
-      headerImgUrl: "",
-      summary: "",
-      body: "",
-      bodyImgUrl: "",
-      tags: [{ type: String }],
-    },
-  });
+    formData: {
+      title: '',
+      headerImgUrl: '',
+      summary: '',
+      body: '',
+      bodyImgUrl: '',
+      tags: [{ type: String }]
+    }
+  })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-  };
+    e.preventDefault()
+  }
 
   try {
-    console.log(state.formData);
-    const result = await createBlogPost(state.formData);
-    console.log(result.data._id);
-    history.push(`/blogs/${result.data._id}`);
+    console.log(state.formData)
+    const result = await createBlogPost(state.formData)
+    console.log(result.data._id)
+    history.push(`/blogs/${result.data._id}`)
   } catch (err) {
-    console.error("error creating blog");
+    console.error('error creating blog')
   }
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value,
-    };
+      [e.target.name]: e.target.value
+    }
 
-    setState({ formData });
-  };
+    setState({ formData })
+  }
 
   return (
     <section>
@@ -73,7 +72,7 @@ const BlogNew = () => {
         </div>
       </form>
     </section>
-  );
-};
+  )
+}
 
-export default BlogNew;
+export default BlogNew

@@ -12,15 +12,15 @@ const Navbar = () => {
           <div className='nav-links'>
             <div className='search-bar'>
               <input />
-              <i class='fas fa-search'></i>
+              <i className='fas fa-search'></i>
             </div>
             <div className='create-post'>
               <button>create post</button>
-              <i class='fas fa-pencil-alt'></i>
+              <i className='fas fa-pencil-alt'></i>
             </div>
             <div className='my-profile'>
               <button>my profile</button>
-              <i class='far fa-user'></i>
+              <i className='far fa-user'></i>
             </div>
           </div>
         </div>
