@@ -6,27 +6,44 @@ const BlogShow = () => {
   const { id } = useParams()
   const [blogInfo, setBlogInfo] = useState([])
 
+  // store the tags from this blogpost
+  const [tags, setTags] = useState([])
+
   useEffect(() => {
     getBlog(id).then((data) => {
       setBlogInfo(data)
+      setTags(data.tags)
     })
   }, [])
 
-  console.log(blogInfo)
-
   return (
     <div className='main-content'>
-      <h1>{blogInfo.header}</h1>
-      <img src={blogInfo.headerImgUrl} />
-      <h3>{blogInfo.summary}</h3>
-      <p>{blogInfo.body}</p>
-      <img
-        src={blogInfo.bodyImgUrl}
-        style={{ width: '300px', height: '300px' }}
-      />
-      <button>{blogInfo.tags}</button>
-      <br />
-      <Link to={'/'}>Home</Link>
+      <img src={blogInfo.headerImgUrl} className='blog-header-img' />
+      <h1 className='blog-title'>{blogInfo.header}</h1>
+      <div className='social-links'>
+        <i className='fab fa-twitter-square'></i>
+        <i className='fab fa-instagram'></i>
+        <i className='fab fa-linkedin'></i>
+        <i className='fab fa-github-square'></i>
+      </div>
+      <h3 className='blog-summary'>{blogInfo.summary}</h3>
+      <hr />
+      <p className='blog-body'>{blogInfo.body}</p>
+      <hr />
+      <div className='body-img'>
+        <img
+          src={blogInfo.bodyImgUrl}
+          style={{ width: '100%', height: '30em', margin: '3em 0' }}
+        />
+      </div>
+      <div className='blog-tags'>
+        {tags.map((tag) => (
+          <button key={tag}>{tag}</button>
+        ))}
+      </div>
+      <Link to={'/'}>
+        <button className='home-btn'>Home</button>
+      </Link>
     </div>
   )
 }
