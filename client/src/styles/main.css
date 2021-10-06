@@ -21,6 +21,7 @@ body {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 3em;
 }
 
 .blog-card-container {
@@ -89,90 +90,154 @@ body {
           box-shadow: -4px 4px 0px 0px rgba(0, 0, 0, 0.6);
 }
 
-nav {
-  padding: 1em;
-  -webkit-box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
-          box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+:root {
+  --clr-primary: #ee6352;
+  --clr-body: #333;
+  --clr-bg: #ddd;
 }
 
-nav .nav-content {
+nav {
+  width: 100%;
+  border-bottom: 1px solid #ebebeb;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.nav-content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 8fr 2fr;
+      grid-template-columns: 8fr 2fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 5em auto;
+}
+
+.nav-logo img {
+  width: 6em;
+  height: 6em;
+  margin: 1em;
+}
+
+.nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.search-bar {
+  width: 300px;
+  margin-right: 3em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 0 5rem;
 }
 
-nav .nav-links {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+.search-bar input {
+  padding: 0.5em 0.8em;
+  width: 100%;
 }
 
-nav .nav-links .search-bar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-  margin-right: 1em;
-}
-
-nav .nav-links .search-bar input {
-  padding: 0.5em 1em;
-  border: none;
-  background: #f2e6ec;
-  -webkit-box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
-          box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
-}
-
-nav .nav-links .search-bar i {
+.search-bar i {
   position: absolute;
-  top: 20%;
-  left: 5%;
-}
-
-nav .nav-links .create-post {
-  margin-right: 1em;
-  -webkit-box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
-          box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
-  background: #bc8df6;
-  padding: 0.2em 0.5em;
-}
-
-nav .nav-links .create-post button {
-  padding: 0.5em 1em;
-  border: none;
-  background: #bc8df6;
-  font-size: 1em;
-}
-
-nav .nav-links .my-profile {
-  margin-right: 1em;
-  -webkit-box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
-          box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
-  background: #87e3cd;
-  padding: 0.2em 0.5em;
-}
-
-nav .nav-links .my-profile button {
-  padding: 0.5em 1em;
-  border: none;
-  background: #87e3cd;
-  font-size: 1em;
-}
-
-.nav-logo img {
-  width: 200px;
+  z-index: 1;
+  padding: 0.5em;
+  color: #333;
 }
 
 .main-content {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.blog-header-img {
+  width: 100%;
+}
+
+.blog-title {
+  font-size: 5em;
+  font-weight: 600;
+  letter-spacing: 5%;
+  text-transform: capitalize;
+  padding: 1em 0;
+}
+
+.social-links {
+  padding: 1em 0;
+}
+
+.social-links i {
+  margin-right: 1em;
+  font-size: 1.8em;
+  color: #be9c9c;
+}
+
+.blog-summary {
+  font-size: 2em;
+  font-weight: 200;
+  padding: 2em;
+  color: #d24a4a;
+}
+
+hr {
+  border: none;
+  height: 20px;
+  width: 50%;
+  height: 50px;
+  margin-top: 0;
+  border-bottom: 1px solid #dfdfdf;
+  -webkit-box-shadow: 0 20px 20px -20px #333;
+          box-shadow: 0 20px 20px -20px #333;
+  margin: -50px auto 10px;
+}
+
+.blog-body {
+  margin: 5em 0;
+  font-size: 1.5em;
+  font-weight: 300;
+}
+
+body-img {
+  width: 100%;
+  margin: 2em;
+}
+
+.blog-tags button {
+  margin-right: 1em;
+  -webkit-box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+          box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+  background: #bc8df6;
+  padding: 0.2em 0.5em;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.blog-tags button button {
+  padding: 0.5em 1em;
+  border: none;
+  background: #bc8df6;
+}
+
+.home-btn {
+  width: 100%;
+  font-size: 2em;
+  border: none;
+  background: #4de9c2;
+  color: #ffffff;
+  padding: 0.5em 0;
+  border-radius: 3px;
+  margin: 2em 0 5em 0;
+  cursor: pointer;
 }
 /*# sourceMappingURL=main.css.map */

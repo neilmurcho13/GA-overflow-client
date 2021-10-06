@@ -8,6 +8,8 @@ const Navbar = () => {
         <div className='nav-content'>
           <div className='nav-logo'>
             <img src={gaLogo} />
+            <span>//</span>
+            <h2>OVERFLOW</h2>
           </div>
           <div className='nav-links'>
             <div className='search-bar'>
