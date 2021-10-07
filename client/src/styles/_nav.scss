@@ -25,6 +25,14 @@ nav {
         top: 20%;
         left: 5%;
       }
+      button {
+        padding: 0.5em 1em;
+        border: none;
+        background: #bc8df6;
+        font-size: 1em;
+        cursor: pointer;
+        box-shadow: -6px 6px 0px 0px rgba(0, 0, 0, 0.6);
+      }
     }
 
     .create-post {
@@ -37,6 +45,7 @@ nav {
         border: none;
         background: #bc8df6;
         font-size: 1em;
+        cursor: pointer;
       }
     }
     .my-profile {
@@ -49,6 +58,7 @@ nav {
         border: none;
         background: #87e3cd;
         font-size: 1em;
+        cursor: pointer;
       }
     }
   }
