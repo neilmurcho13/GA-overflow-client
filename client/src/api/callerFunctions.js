@@ -8,11 +8,33 @@ export const getAllBlogs = async () => {
 
   const { data } = await axios.request(options);
 
-  console.log(data);
+  console.log('coming from getAllBlogs', data);
   return data;
 };
 
-export const createBlog = (formData) => {
-  console.log('Neil CallerFunction works');
-  return axios.post(`http://localhost:3000/api/blogs`, formData);
+export const getBlog = async (id) => {
+  const options = {
+    method: 'GET',
+    url: `http://localhost:3000/api/blogs/${id}`,
+  };
+
+  const { data } = await axios.request(options);
+
+  console.log('coming from getBlog', data);
+  return data;
+};
+
+export const searchBlogs = async (q) => {
+  const options = {
+    method: 'GET',
+    url: `http://localhost:3000/api/search`,
+    params: {
+      q,
+    },
+  };
+
+  const { data } = await axios.request(options);
+
+  console.log('coming from search', data);
+  return data;
 };
