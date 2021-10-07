@@ -1,28 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { searchBlogs } from "../../api/callerFunctions.js";
 import BlogCard from "../blogs/BlogCard.js";
 
-const Search = () => {
+const Search = ({ searchQuery }) => {
   const [blogs, setBlogs] = useState([]);
-  const [q, setQ] = useState("");
+  console.log("search query is ", searchQuery);
 
-  const search = function (event) {
-    event.preventDefault();
-    searchBlogs(q).then((blogs) => setBlogs(blogs));
-  };
+  useEffect(() => {
+    searchBlogs(searchQuery).then((blogs) => setBlogs(blogs));
+  }, []);
 
   return (
     <>
-      <form onSubmit={search} className="search-bar">
-        <input
-          type="search"
-          placeholder="search"
-          onChange={(e) => setQ(e.target.value)}
-          value={q}
-          required
-        />
-        <button type="submit" className="fas fa-search"></button>
-      </form>
       <div className="main-content">
         <h1 className="latest-header">latest</h1>
         <div className="blog-card-container">
