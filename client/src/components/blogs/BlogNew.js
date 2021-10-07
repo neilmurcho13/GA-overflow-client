@@ -1,37 +1,34 @@
-import React from "react";
-import BlogBodyImageField from "../../fields/BlogBodyImageField.js";
-import Blogtagsfield from "../../fields/BlogTagsField.js";
-import Blogtagsfield from "../../fields/BlogTextField";
-import Blogtitlefield from "../../fields/BlogTitleField.js";
-import createBlogPost from "../../fields/BlogTitleField.js";
-import HeaderImageField from "../../fields/HeaderImageField.js";
-import SubHeadingField from "../../fields/SubHeadingField.js";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import axios from 'axios';
+import { createBlog } from '../../api/callerFunctions';
 
 const BlogNew = () => {
   const history = useHistory();
   const [state, setState] = React.useState({
-    formDate: {
-      title: "",
-      headerImgUrl: "",
-      summary: "",
-      body: "",
-      bodyImgUrl: "",
-      tags: [{ type: String }],
+    formData: {
+      name: '',
+      //summary: '',
+      headerImgUrl: '',
+      body: '',
+      bodyImgUrl: '',
+      tags: [],
     },
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  };
+    console.log('Test', state.formData);
 
-  try {
-    console.log(state.formData);
-    const result = await createBlogPost(state.formData);
-    console.log(result.data._id);
-    history.push(`/blogs/${result.data._id}`);
-  } catch (err) {
-    console.error("error creating blog");
-  }
+    try {
+      console.log('Running the try');
+      const result = await createBlog(state.formData);
+      console.log(state.formData.name);
+      history.push(`/blogs/${state.formData.name}`);
+    } catch (err) {
+      console.log('Error sending blog data', err);
+    }
+  };
 
   const handleChange = (e) => {
     const formData = {
@@ -43,36 +40,83 @@ const BlogNew = () => {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <Blogtitlefield
-            handleChange={handleChange}
-            header={state.formData.title}
-          />
-          <SubHeadingField
-            handleChange={handleChange}
-            name={state.formData.summary}
-          />
-          <HeaderImageField
-            handleChange={handleChange}
-            tastingNotes={state.formData.headerImgUrl}
-          />
-          <Blogtagsfield
-            handleChange={handleChange}
-            name={state.formData.body}
-          />
-          <BlogBodyImageField
-            handleChange={handleChange}
-            origin={state.formData.bodyImgUrl}
-          />
-          <Blogtagsfield
-            handleChange={handleChange}
-            name={state.formData.tags}
-          />
-        </div>
-      </form>
-    </section>
+    <>
+      <div>
+        <h1> Create blog post </h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label>
+              Blog header
+              <input
+                type='text'
+                placeholder='my blog header'
+                onChange={handleChange}
+                name='name'
+                value={state.formData.name}
+              />
+            </label>
+          </div>
+
+          <div>
+            <label>
+              Feature image
+              <input
+                type='text'
+                placeholder='feature image url'
+                onChange={handleChange}
+                name='headerImgUrl'
+                value={state.formData.headerImgUrl}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Blog post
+              <textarea
+                type='text'
+                placeholder='Blog post body'
+                onChange={handleChange}
+                name='body'
+                required
+                rows='10'
+                value={state.formData.body}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Second image
+              <input
+                type='text'
+                placeholder='Body image url'
+                onChange={handleChange}
+                name='bodyImgUrl'
+                value={state.formData.bodyImgUrl}
+              />
+            </label>
+          </div>
+          <div>
+            <label>
+              Tags
+              <input
+                type='array'
+                placeholder='tags'
+                onChange={handleChange}
+                name='tags'
+                value={state.formData.tags}
+              />
+            </label>
+          </div>
+          <div className='field'>
+            <input
+              type='submit'
+              value='Submit'
+              //value={`Add ${state.formData.name || 'blog header'}`}
+            />
+          </div>
+        </form>
+      </div>
+    </>
   );
 };
 

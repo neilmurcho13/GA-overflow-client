@@ -1,10 +1,10 @@
-import React from 'react'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import React from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import Home from './components/common/Home.js'
-import Navbar from './components/common/Navbar.js'
-
-import CreateNewBlog from './components/blogs/CreateNewBlog.js'
+import random from './components/blogs/random.js';
+import Home from './components/common/Home.js';
+import Navbar from './components/common/Navbar.js';
+import BlogNew from './components/blogs/BlogNew.js';
 
 const App = () => {
   return (
@@ -12,10 +12,11 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/new-blog' component={CreateNewBlog} />
+        <Route exact path='/random' component={random} />
+        <Route exact path='/blogs/new' component={BlogNew} />
       </Switch>
     </BrowserRouter>
-  )
-}
+  );
+};
 
-export default App
+export default App;
