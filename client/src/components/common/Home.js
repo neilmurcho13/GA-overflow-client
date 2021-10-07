@@ -5,7 +5,6 @@ import BlogCard from '../blogs/BlogCard.js'
 const Home = () => {
   const [blogs, setBlogs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState(null)
 
   useEffect(() => {
     getAllBlogs().then((blogs) => {
@@ -17,7 +16,7 @@ const Home = () => {
   return (
     <div className='main-content'>
       <h1 className='latest-header'>latest</h1>
-      {isLoading && <div>Loading...</div>}
+      {isLoading && <h2>Loading...</h2>}
       {blogs && (
         <div className='blog-card-container'>
           {blogs.map((blog) => (
