@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import gaLogo from "../../assets/ga-logo.png";
 
-const Navbar = () => {
+const Navbar = ({ onSearchChange }) => {
+  const history = useHistory();
+  const [searchInputVaule, setSearchInputValue] = useState("");
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    onSearchChange(searchInputVaule);
+    history.push("/search");
+  };
+
   return (
     <>
       <nav>
@@ -11,11 +21,17 @@ const Navbar = () => {
             <span>//</span>
             <h2>OVERFLOW</h2>
           </div>
+
           <div className="nav-links">
-            <div className="search-bar">
-              <input />
+            <form onSubmit={handleSearch} className="search-bar">
+              <input
+                onChange={(e) => setSearchInputValue(e.target.value)}
+                value={searchInputVaule}
+                required
+              />
               <i className="fas fa-search"></i>
-            </div>
+            </form>
+
             <div className="create-post">
               <button>create post</button>
               <i className="fas fa-pencil-alt"></i>
@@ -32,3 +48,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// <div className="nav-links">
+// <div className="search-bar">
+//   <input />
+//   <i className="fas fa-search"></i>
+// </div>
