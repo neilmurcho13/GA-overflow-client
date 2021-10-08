@@ -1,43 +1,43 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import axios from 'axios';
-import { createBlog } from '../../api/callerFunctions';
+import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+import axios from 'axios'
+import { createBlog } from '../../api/callerFunctions'
 
 const BlogNew = () => {
-  const history = useHistory();
-  const [state, setState] = React.useState({
+  const history = useHistory()
+  const [state, setState] = useState({
     formData: {
       name: '',
       //summary: '',
       headerImgUrl: '',
       body: '',
       bodyImgUrl: '',
-      tags: [],
-    },
-  });
+      tags: []
+    }
+  })
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Test', state.formData);
+    e.preventDefault()
+    console.log('Test', state.formData)
 
     try {
-      console.log('Running the try');
-      const result = await createBlog(state.formData);
-      console.log(state.formData.name);
-      history.push(`/blogs/${state.formData.name}`);
+      console.log('Running the try')
+      const result = await createBlog(state.formData)
+      console.log(state.formData.name)
+      history.push(`/blogs/${state.formData.name}`)
     } catch (err) {
-      console.log('Error sending blog data', err);
+      console.log('Error sending blog data', err)
     }
-  };
+  }
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value,
-    };
+      [e.target.name]: e.target.value
+    }
 
-    setState({ formData });
-  };
+    setState({ formData })
+  }
 
   return (
     <>
@@ -117,7 +117,7 @@ const BlogNew = () => {
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default BlogNew;
+export default BlogNew
