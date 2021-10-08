@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const BlogCard = ({ id, header, headerImgUrl, body }) => {
   return (
@@ -29,7 +30,7 @@ const BlogCard = ({ id, header, headerImgUrl, body }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default BlogCard;
+export default BlogCard
