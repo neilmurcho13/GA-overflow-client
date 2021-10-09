@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { setToken } from "../../api/authFunctions";
 import { loginUser } from "../../api/callerFunctions";
 
-function Login() {
+const Login = () => {
   const history = useHistory();
   const [state, setState] = useState({
     formData: {
@@ -12,12 +13,15 @@ function Login() {
   });
 
   const handleSubmit = async (e) => {
+    console.log("login submit fired");
     e.preventDefault();
 
     try {
       const res = await loginUser(state.formData);
-      if (res.status === 200) {
+      console.log(res);
+      if (res.status === 202) {
         setToken(res.data.token);
+        console.log(res.data.token);
         history.push("/");
       }
     } catch (err) {
@@ -32,12 +36,13 @@ function Login() {
     };
 
     setState({ formData });
+    console.log(formData);
   };
 
   return (
     <section className="main-content">
       <div>
-        <div className="login-container">
+        <div className="auth-container">
           <form onSubmit={handleSubmit}>
             <div>
               <label>email: </label>
@@ -45,10 +50,12 @@ function Login() {
                 <input
                   name="email"
                   value={state.formData.email}
+                  required
                   onChange={handleChange}
                 />
               </div>
             </div>
+
             <div>
               <label>password: </label>
               <div className="user-input">
@@ -56,12 +63,14 @@ function Login() {
                   name="password"
                   type="password"
                   value={state.formData.password}
+                  required
                   onChange={handleChange}
                 />
               </div>
             </div>
-            <div className="login-btn">
-              <button type="submit">login</button>
+
+            <div className="auth-btn">
+              <input type="submit" value="login" />
               <i class="fa fa-sign-in"></i>
             </div>
           </form>
@@ -69,6 +78,6 @@ function Login() {
       </div>
     </section>
   );
-}
+};
 
 export default Login;

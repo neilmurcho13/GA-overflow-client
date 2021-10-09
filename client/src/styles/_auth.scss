@@ -1,4 +1,4 @@
-.login-container {
+.auth-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,19 +18,20 @@
   }
 }
 
-.login-btn {
+.auth-btn {
   width: 50px;
   margin-left: 4.5em;
   margin-top: 1.5em;
   display: flex;
   align-items: center;
-  button {
+  input {
     padding: 0.8em 2em;
     border: 2px solid black;
     white-space: nowrap;
     text-align: center;
     background: #29f1bf;
     box-shadow: #178569 -5px 5px;
+    cursor: pointer;
   }
   i {
     position: absolute;
