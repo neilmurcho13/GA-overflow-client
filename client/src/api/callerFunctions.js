@@ -1,5 +1,9 @@
 import axios from "axios";
 
+export const loginUser = (formData) => {
+  return axios.post(`http://localhost:3000/api/login`, formData);
+};
+
 export const getAllBlogs = async () => {
   const options = {
     method: "GET",
