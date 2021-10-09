@@ -21,6 +21,7 @@ const Register = () => {
       console.log(res);
       if (res.status === 201) {
         history.push("/login");
+
       }
     } catch (err) {
       console.error("Error registering user", err);
