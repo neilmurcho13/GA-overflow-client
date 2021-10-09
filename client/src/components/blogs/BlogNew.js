@@ -28,16 +28,21 @@ const BlogNew = () => {
     console.log('Test', state.formData)
 
     try {
-      console.log('Running the try')
-      const result = await createBlog(state.formData)
-      console.log('header', state.formData.header)
-      const titleUrl = state.formData.header
-      let titleUrlNoSpace = titleUrl.split(' ').join('-')
-      titleUrlNoSpace = truncateString(titleUrlNoSpace, 30)
-      console.log('clear Url', titleUrlNoSpace)
-      history.push(`/blogs/${titleUrlNoSpace}${result.data._id}`)
+//       console.log('Running the try')
+//       const result = await createBlog(state.formData)
+
+      console.log(state.formData.header)
+      history.push(`/`)
+
+//       console.log('header', state.formData.header)
+//       const titleUrl = state.formData.header
+//       let titleUrlNoSpace = titleUrl.split(' ').join('-')
+//       titleUrlNoSpace = truncateString(titleUrlNoSpace, 30)
+//       console.log('clear Url', titleUrlNoSpace)
+//       history.push(`/blogs/${titleUrlNoSpace}${result.data._id}`)
 
       /* history.push(`/blogs/${state.formData.header}`); */
+
     } catch (err) {
       console.log('Error sending blog data', err)
     }
