@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+export const loginUser = (formData) => {
+  return axios.post(`http://localhost:3000/api/login`, formData);
+};
+
 export const getAllBlogs = async () => {
   const options = {
     method: 'GET',
@@ -46,4 +50,10 @@ export const createBlog = (formData) => {
 
 export const deleteBlog = (id) => {
   return axios.delete(`http://localhost:3000/api/blogs/${id}`)
+}
+
+// AUTH METHODS
+
+export const registerUser = (formData) => {
+  return axios.post(`http://localhost:3000/api/register`, formData)
 }
