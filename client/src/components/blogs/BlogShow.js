@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { useParams, Link } from 'react-router-dom'
-import { getBlog } from '../../api/callerFunctions.js'
+import { useParams, Link, useHistory } from 'react-router-dom'
+import { deleteBlog, getBlog } from '../../api/callerFunctions.js'
 
 const BlogShow = () => {
+  const history = useHistory()
   const { id } = useParams()
   const [blogInfo, setBlogInfo] = useState([])
 
@@ -15,6 +16,15 @@ const BlogShow = () => {
       setTags(data.tags)
     })
   }, [])
+
+  const handleDelete = async () => {
+    try {
+      await deleteBlog(id)
+      history.push('/')
+    } catch (err) {
+      console.error(`Failed to delete blog id: ${id}`, err)
+    }
+  }
 
   return (
     <div className='main-content'>
@@ -44,6 +54,9 @@ const BlogShow = () => {
       <Link to={'/'}>
         <button className='home-btn'>Home</button>
       </Link>
+      <button className='delete-blog-btn' onClick={handleDelete}>
+        Delete Blog
+      </button>
     </div>
   )
 }

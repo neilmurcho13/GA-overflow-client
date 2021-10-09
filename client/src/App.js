@@ -1,34 +1,41 @@
-import React, { useState } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import React, { useState } from 'react'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import Home from "./components/common/Home.js";
-import Navbar from "./components/common/Navbar.js";
+import Home from './components/common/Home.js'
+import Navbar from './components/common/Navbar.js'
 
-import BlogShow from "./components/blogs/BlogShow.js";
-import BlogNew from "./components/blogs/BlogNew.js";
-import Search from "./components/common/Search.js";
+import BlogShow from './components/blogs/BlogShow.js'
+import BlogNew from './components/blogs/BlogNew.js'
+import Search from './components/common/Search.js'
 import Login from "./components/auth/Login.js";
+import Register from './components/auth/Register.js'
+
 
 const App = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  console.log("from app ", searchQuery);
+  const [searchQuery, setSearchQuery] = useState('')
+  console.log('from app ', searchQuery)
 
   return (
     <BrowserRouter>
       <Navbar onSearchChange={setSearchQuery} />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/blogs/new" component={BlogNew} />
-        <Route exact path="/blogs/:id" component={BlogShow} />
+
+        <Route exact path='/' component={Home} />
+        <Route exact path='/blogs/new' component={BlogNew} />
+        <Route exact path='/blogs/:id' component={BlogShow} />
+
         <Route
           exact
-          path="/search"
-          component={(props) => <Search {...props} searchQuery={searchQuery} />}
+          path='/search'
+          component={(props) => (
+            <Search {...props} searchQuery={searchQuery} />
+          )}
         />
+        <Route exact path='/register' component={Register} />
+        <Route exact path="/login" component={Login} />
       </Switch>
     </BrowserRouter>
-  );
-};
+  )
+}
 
-export default App;
+export default App
