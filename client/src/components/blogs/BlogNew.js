@@ -8,13 +8,20 @@ const BlogNew = () => {
   const [state, setState] = useState({
     formData: {
       header: '',
-      // summary: '',
+      //summary: '',
       headerImgUrl: '',
       body: '',
       bodyImgUrl: '',
-      tags: []
-    }
+      tags: [],
+    },
   })
+
+  function truncateString(str, num) {
+    if (str.length <= num) {
+      return str
+    }
+    return str.slice(0, num) + '_' //
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -23,8 +30,14 @@ const BlogNew = () => {
     try {
       console.log('Running the try')
       const result = await createBlog(state.formData)
-      console.log(state.formData.name)
-      history.push(`/blogs/${state.formData.name}`)
+      console.log('header', state.formData.header)
+      const titleUrl = state.formData.header
+      let titleUrlNoSpace = titleUrl.split(' ').join('-')
+      titleUrlNoSpace = truncateString(titleUrlNoSpace, 30)
+      console.log('clear Url', titleUrlNoSpace)
+      history.push(`/blogs/${titleUrlNoSpace}${result.data._id}`)
+
+      /* history.push(`/blogs/${state.formData.header}`); */
     } catch (err) {
       console.log('Error sending blog data', err)
     }
@@ -33,7 +46,7 @@ const BlogNew = () => {
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }
 
     setState({ formData })
@@ -48,10 +61,10 @@ const BlogNew = () => {
             <label>
               Blog header
               <input
-                type='text'
-                placeholder='my blog header'
+                type="text"
+                placeholder="my blog header"
                 onChange={handleChange}
-                name='header'
+                name="header"
                 value={state.formData.header}
               />
             </label>
@@ -61,10 +74,10 @@ const BlogNew = () => {
             <label>
               Feature image
               <input
-                type='text'
-                placeholder='feature image url'
+                type="text"
+                placeholder="feature image url"
                 onChange={handleChange}
-                name='headerImgUrl'
+                name="headerImgUrl"
                 value={state.formData.headerImgUrl}
               />
             </label>
@@ -73,12 +86,12 @@ const BlogNew = () => {
             <label>
               Blog post
               <textarea
-                type='text'
-                placeholder='Blog post body'
+                type="text"
+                placeholder="Blog post body"
                 onChange={handleChange}
-                name='body'
+                name="body"
                 required
-                rows='10'
+                rows="10"
                 value={state.formData.body}
               />
             </label>
@@ -87,10 +100,10 @@ const BlogNew = () => {
             <label>
               Second image
               <input
-                type='text'
-                placeholder='Body image url'
+                type="text"
+                placeholder="Body image url"
                 onChange={handleChange}
-                name='bodyImgUrl'
+                name="bodyImgUrl"
                 value={state.formData.bodyImgUrl}
               />
             </label>
@@ -99,18 +112,18 @@ const BlogNew = () => {
             <label>
               Tags
               <input
-                type='array'
-                placeholder='tags'
+                type="array"
+                placeholder="tags"
                 onChange={handleChange}
-                name='tags'
+                name="tags"
                 value={state.formData.tags}
               />
             </label>
           </div>
-          <div className='field'>
+          <div className="field">
             <input
-              type='submit'
-              value='Submit'
+              type="submit"
+              value="Submit"
               //value={`Add ${state.formData.name || 'blog header'}`}
             />
           </div>
