@@ -1,43 +1,43 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import { createBlog } from '../../api/callerFunctions'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { createBlog } from "../../api/callerFunctions";
 
 const BlogNew = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [state, setState] = useState({
     formData: {
-      name: '',
+      name: "",
       //summary: '',
-      headerImgUrl: '',
-      body: '',
-      bodyImgUrl: '',
+      headerImgUrl: "",
+      body: "",
+      bodyImgUrl: "",
       tags: []
     }
-  })
+  });
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    console.log('Test', state.formData)
+    e.preventDefault();
+    console.log("Test", state.formData);
 
     try {
-      console.log('Running the try')
-      const result = await createBlog(state.formData)
-      console.log(state.formData.name)
-      history.push(`/blogs/${state.formData.name}`)
+      console.log("Running the try");
+      const result = await createBlog(state.formData);
+      console.log(state.formData.name);
+      history.push(`/blogs/${state.formData.name}`);
     } catch (err) {
-      console.log('Error sending blog data', err)
+      console.log("Error sending blog data", err);
     }
-  }
+  };
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
       [e.target.name]: e.target.value
-    }
+    };
 
-    setState({ formData })
-  }
+    setState({ formData });
+  };
 
   return (
     <>
@@ -48,10 +48,10 @@ const BlogNew = () => {
             <label>
               Blog header
               <input
-                type='text'
-                placeholder='my blog header'
+                type="text"
+                placeholder="my blog header"
                 onChange={handleChange}
-                name='name'
+                name="name"
                 value={state.formData.name}
               />
             </label>
@@ -61,10 +61,10 @@ const BlogNew = () => {
             <label>
               Feature image
               <input
-                type='text'
-                placeholder='feature image url'
+                type="text"
+                placeholder="feature image url"
                 onChange={handleChange}
-                name='headerImgUrl'
+                name="headerImgUrl"
                 value={state.formData.headerImgUrl}
               />
             </label>
@@ -73,12 +73,12 @@ const BlogNew = () => {
             <label>
               Blog post
               <textarea
-                type='text'
-                placeholder='Blog post body'
+                type="text"
+                placeholder="Blog post body"
                 onChange={handleChange}
-                name='body'
+                name="body"
                 required
-                rows='10'
+                rows="10"
                 value={state.formData.body}
               />
             </label>
@@ -87,10 +87,10 @@ const BlogNew = () => {
             <label>
               Second image
               <input
-                type='text'
-                placeholder='Body image url'
+                type="text"
+                placeholder="Body image url"
                 onChange={handleChange}
-                name='bodyImgUrl'
+                name="bodyImgUrl"
                 value={state.formData.bodyImgUrl}
               />
             </label>
@@ -99,25 +99,25 @@ const BlogNew = () => {
             <label>
               Tags
               <input
-                type='array'
-                placeholder='tags'
+                type="array"
+                placeholder="tags"
                 onChange={handleChange}
-                name='tags'
+                name="tags"
                 value={state.formData.tags}
               />
             </label>
           </div>
-          <div className='field'>
+          <div className="field">
             <input
-              type='submit'
-              value='Submit'
+              type="submit"
+              value="Submit"
               //value={`Add ${state.formData.name || 'blog header'}`}
             />
           </div>
         </form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default BlogNew
+export default BlogNew;
