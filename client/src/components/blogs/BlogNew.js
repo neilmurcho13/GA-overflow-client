@@ -8,7 +8,7 @@ const BlogNew = () => {
   const [state, setState] = useState({
     formData: {
       header: '',
-      // summary: '',
+      //summary: '',
       headerImgUrl: '',
       body: '',
       bodyImgUrl: '',
@@ -23,8 +23,8 @@ const BlogNew = () => {
     try {
       console.log('Running the try')
       const result = await createBlog(state.formData)
-      console.log(state.formData.name)
-      history.push(`/blogs/${state.formData.name}`)
+      console.log(state.formData.header)
+      history.push(`/`)
     } catch (err) {
       console.log('Error sending blog data', err)
     }
