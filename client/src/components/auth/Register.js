@@ -1,84 +1,98 @@
-import React from 'react'
-import { useHistory } from 'react-router-dom'
-import { registerUser } from '../../api/callerFunctions'
+import React from "react";
+import { useHistory } from "react-router-dom";
+import { registerUser } from "../../api/callerFunctions";
 
 const Register = () => {
-  const history = useHistory()
+  const history = useHistory();
   const [state, setState] = React.useState({
     formData: {
-      username: '',
-      email: '',
-      password: ''
+      username: "",
+      email: "",
+      password: ""
     }
-  })
+  });
 
   const handleSubmit = async (e) => {
-    console.log('submit fired')
-    e.preventDefault()
+    console.log("submit fired");
+    e.preventDefault();
 
     try {
-      const res = await registerUser(state.formData)
-      if (res.status === 200) {
-        history.push('/login')
+      const res = await registerUser(state.formData);
+      console.log(res);
+      if (res.status === 201) {
+        history.push("/login");
       }
     } catch (err) {
-      console.error('Error registering user', err)
+      console.error("Error registering user", err);
     }
-  }
+  };
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
       [e.target.name]: e.target.value
-    }
+    };
 
-    setState({ formData })
-    console.log(formData)
-  }
+    setState({ formData });
+    console.log(formData);
+  };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <section className="main-content">
       <div>
-        <label className='label'>Username</label>
-        <input
-          className='input'
-          placeholder='Username'
-          name='username'
-          value={state.formData.username}
-          autoComplete='off'
-          onChange={handleChange}
-        />
-      </div>
+        <div className="auth-container">
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>username: </label>
+              <div className="user-input">
+                <input
+                  className="input"
+                  name="username"
+                  value={state.formData.username}
+                  autoComplete="off"
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
-      <div>
-        <label className='label'>Email</label>
-        <input
-          className='input'
-          placeholder='Email'
-          name='email'
-          autoComplete='off'
-          value={state.formData.email}
-          onChange={handleChange}
-        />
-      </div>
+            <div>
+              <label>email: </label>
+              <div className="user-input">
+                <input
+                  className="input"
+                  name="email"
+                  autoComplete="off"
+                  required
+                  value={state.formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
-      <div>
-        <label className='label'>Password</label>
-        <input
-          className='input'
-          placeholder='Password'
-          name='password'
-          type='password'
-          value={state.formData.password}
-          onChange={handleChange}
-        />
-      </div>
+            <div>
+              <label>password: </label>
+              <div className="user-input">
+                <input
+                  className="input"
+                  name="password"
+                  type="password"
+                  value={state.formData.password}
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
-      <div className='field'>
-        <input type='submit' value='Register' />
+            <div className="auth-btn">
+              <input type="submit" value="Register" />
+              <i class="fa fa-user-plus"></i>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-  )
-}
+    </section>
+  );
+};
 
-export default Register
+export default Register;
