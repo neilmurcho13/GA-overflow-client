@@ -8,6 +8,8 @@ import BlogShow from './components/blogs/BlogShow.js'
 import BlogNew from './components/blogs/BlogNew.js'
 import Search from './components/common/Search.js'
 
+import Register from './components/auth/Register.js'
+
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('')
   console.log('from app ', searchQuery)
@@ -26,6 +28,7 @@ const App = () => {
             <Search {...props} searchQuery={searchQuery} />
           )}
         />
+        <Route exact path='/register' component={Register} />
       </Switch>
     </BrowserRouter>
   )

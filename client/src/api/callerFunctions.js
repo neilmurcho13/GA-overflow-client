@@ -47,3 +47,9 @@ export const createBlog = (formData) => {
 export const deleteBlog = (id) => {
   return axios.delete(`http://localhost:3000/api/blogs/${id}`)
 }
+
+// AUTH METHODS
+
+export const registerUser = (formData) => {
+  return axios.post(`http://localhost:3000/api/register`, formData)
+}
