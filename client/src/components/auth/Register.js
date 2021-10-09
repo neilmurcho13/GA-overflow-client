@@ -18,7 +18,7 @@ const Register = () => {
 
     try {
       const res = await registerUser(state.formData)
-      if (res.status === 200) {
+      if (res.status === 201) {
         history.push('/login')
       }
     } catch (err) {
