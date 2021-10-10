@@ -7,6 +7,10 @@
   list-style: none;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   min-height: 100vh;
   overflow-x: hidden;
