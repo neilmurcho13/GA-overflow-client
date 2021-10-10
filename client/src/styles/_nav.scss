@@ -23,6 +23,7 @@ nav {
   span {
     font-weight: 900;
     margin-left: 0.2em;
+    color: crimson;
   }
   h2 {
     font-weight: 300;
@@ -37,10 +38,6 @@ nav {
   }
 }
 
-.nav-links > div {
-  margin-right: 1em;
-}
-
 .nav-links {
   display: flex;
 }
@@ -50,11 +47,12 @@ nav {
   display: flex;
   align-items: center;
   margin-right: 1em;
-  box-shadow: rgba(238, 27, 27, 0.4) -5px 5px,
+  box-shadow: rgba(238, 27, 27, 0.4) -6px 5px,
     rgba(184, 74, 74, 0.3) -10px 10px;
   input {
-    padding: 0.8em 2em;
-    border: 2px solid black;
+    padding: 0.9em 2em;
+    border: 3px solid black;
+    transform: translateY(1px);
   }
   i {
     position: absolute;
@@ -68,18 +66,23 @@ nav {
   width: 50px;
   display: flex;
   align-items: center;
-  button {
-    padding: 0.8em 2em;
-    border: 2px solid black;
+  cursor: pointer;
+  margin-right: 3em;
+  div {
+    padding: 0.5em 2em;
+    border: 3px solid black;
     white-space: nowrap;
+    color: #1e0d2c;
     background: #d29aff;
     box-shadow: #73548b -5px 5px;
+    font-weight: 500;
   }
   i {
     position: absolute;
     z-index: 1;
     padding: 0em 0.5em;
     color: #333;
+    font-size: 1.3em;
   }
 }
 
@@ -89,18 +92,21 @@ nav {
   display: flex;
   align-items: center;
 
-  button {
-    padding: 0.8em 2em;
-    border: 2px solid black;
+  div {
+    padding: 0.5em 2em;
+    border: 3px solid black;
     white-space: nowrap;
     text-align: center;
+    color: #083328;
     background: #29f1bf;
     box-shadow: #178569 -5px 5px;
+    font-weight: 500;
   }
   i {
     position: absolute;
     z-index: 1;
     padding: 0em 0.5em;
     color: #333;
+    font-size: 1.3em;
   }
 }
