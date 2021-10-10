@@ -8,7 +8,6 @@ export const getAllBlogs = async () => {
 
   const { data } = await axios.request(options)
 
-  console.log('coming from getAllBlogs', data)
   return data
 }
 
@@ -20,7 +19,6 @@ export const getBlog = async (id) => {
 
   const { data } = await axios.request(options)
 
-  console.log('coming from getBlog', data)
   return data
 }
 
@@ -35,7 +33,6 @@ export const searchBlogs = async (q) => {
 
   const { data } = await axios.request(options)
 
-  console.log('coming from search', data)
   return data
 }
 

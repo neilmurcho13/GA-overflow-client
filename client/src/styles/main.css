@@ -273,6 +273,7 @@ nav {
   font-weight: 200;
   padding: 2em;
   color: #d24a4a;
+  text-align: center;
 }
 
 hr {
@@ -448,5 +449,15 @@ body-img {
   border-radius: 3px;
   margin: 2em 0 5em 0;
   cursor: pointer;
+}
+
+.error-404 {
+  height: 70vh;
+  display: -ms-grid;
+  display: grid;
+  place-content: center;
+  max-width: 400px;
+  margin: 2em auto;
+  font-size: 1.6em;
 }
 /*# sourceMappingURL=main.css.map */
