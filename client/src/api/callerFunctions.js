@@ -39,11 +39,6 @@ export const searchBlogs = async (q) => {
   return data
 }
 
-export const createBlog = (formData) => {
-  console.log('Neil CallerFunction works')
-  return axios.post(`http://localhost:3000/api/blogs`, formData)
-}
-
 export const deleteBlog = (id) => {
   return axios.delete(`http://localhost:3000/api/blogs/${id}`)
 }

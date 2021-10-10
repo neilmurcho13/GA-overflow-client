@@ -1,140 +1,80 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-import axios from 'axios'
-import { createBlog } from '../../api/callerFunctions'
 
 const BlogNew = () => {
+  const [header, setHeader] = useState('')
+  const [headerImgUrl, setHeaderImgUrl] = useState('')
+  const [body, setBody] = useState('')
+  const [summary, setSummary] = useState('')
+  const [bodyImgUrl, setBodyImgUrl] = useState('')
+
+  const [isPending, setIsPending] = useState(false)
+
   const history = useHistory()
-  const [state, setState] = useState({
-    formData: {
-      header: '',
-      //summary: '',
-      headerImgUrl: '',
-      body: '',
-      bodyImgUrl: '',
-      tags: [],
-    },
-  })
 
-  function truncateString(str, num) {
-    if (str.length <= num) {
-      return str
-    }
-    return str.slice(0, num) + '_' //
-  }
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Test', state.formData)
+    const blog = { header, headerImgUrl, body, summary, bodyImgUrl }
 
-    try {
-//       console.log('Running the try')
-//       const result = await createBlog(state.formData)
+    setIsPending(true)
 
-      console.log(state.formData.header)
-      history.push(`/`)
-
-//       console.log('header', state.formData.header)
-//       const titleUrl = state.formData.header
-//       let titleUrlNoSpace = titleUrl.split(' ').join('-')
-//       titleUrlNoSpace = truncateString(titleUrlNoSpace, 30)
-//       console.log('clear Url', titleUrlNoSpace)
-//       history.push(`/blogs/${titleUrlNoSpace}${result.data._id}`)
-
-      /* history.push(`/blogs/${state.formData.header}`); */
-
-    } catch (err) {
-      console.log('Error sending blog data', err)
-    }
-  }
-
-  const handleChange = (e) => {
-    const formData = {
-      ...state.formData,
-      [e.target.name]: e.target.value,
-    }
-
-    setState({ formData })
+    fetch('http://localhost:3000/api/blogs', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(blog)
+    }).then(() => {
+      console.log('new blog added 🤖', blog)
+      setIsPending(false)
+    })
+    history.push('/')
   }
 
   return (
-    <>
-      <div>
-        <h1> Create blog post </h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label>
-              Blog header
-              <input
-                type="text"
-                placeholder="my blog header"
-                onChange={handleChange}
-                name="header"
-                value={state.formData.header}
-              />
-            </label>
-          </div>
-
-          <div>
-            <label>
-              Feature image
-              <input
-                type="text"
-                placeholder="feature image url"
-                onChange={handleChange}
-                name="headerImgUrl"
-                value={state.formData.headerImgUrl}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Blog post
-              <textarea
-                type="text"
-                placeholder="Blog post body"
-                onChange={handleChange}
-                name="body"
-                required
-                rows="10"
-                value={state.formData.body}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Second image
-              <input
-                type="text"
-                placeholder="Body image url"
-                onChange={handleChange}
-                name="bodyImgUrl"
-                value={state.formData.bodyImgUrl}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Tags
-              <input
-                type="array"
-                placeholder="tags"
-                onChange={handleChange}
-                name="tags"
-                value={state.formData.tags}
-              />
-            </label>
-          </div>
-          <div className="field">
-            <input
-              type="submit"
-              value="Submit"
-              //value={`Add ${state.formData.name || 'blog header'}`}
-            />
-          </div>
-        </form>
-      </div>
-    </>
+    <div className='create-container'>
+      <h2>Create a new blog</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Blog Header*</label>
+        <input
+          type='text'
+          required
+          value={header}
+          onChange={(e) => setHeader(e.target.value)}
+          placeholder='...'
+        />
+        <label>Header Image*</label>
+        <input
+          type='text'
+          required
+          value={headerImgUrl}
+          onChange={(e) => setHeaderImgUrl(e.target.value)}
+          placeholder='copy + paste image address url'
+        />
+        <label>Blog body* </label>
+        <textarea
+          required
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+          placeholder='...'
+        ></textarea>
+        <label>Blog sub-header* </label>
+        <textarea
+          required
+          value={summary}
+          onChange={(e) => setSummary(e.target.value)}
+          placeholder='...'
+        ></textarea>
+        <label>Body Image*</label>
+        <input
+          type='text'
+          required
+          value={bodyImgUrl}
+          onChange={(e) => setBodyImgUrl(e.target.value)}
+          placeholder='copy + paste image address url'
+        />
+        {!isPending && <button>Add blog</button>}
+        {isPending && <button disabled>Creating blog</button>}
+      </form>
+    </div>
   )
 }
 
