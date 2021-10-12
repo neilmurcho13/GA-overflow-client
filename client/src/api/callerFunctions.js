@@ -40,14 +40,14 @@ export const deleteBlog = (id) => {
   return axios.delete(`http://localhost:3000/api/blogs/${id}`);
 };
 
-export const createComments = async (newComment) => {
+export const createComments = async (id, newComment) => {
   const options = {
     method: "POST",
     url: `http://localhost:3000/api/blogs/${id}/comments`,
     body: newComment
   };
 
-  const { data } = await request(options);
+  const { data } = await axios.request(options);
   return data;
 };
 
