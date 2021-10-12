@@ -8,7 +8,6 @@ const BlogComments = () => {
   const [comments, setComments] = useState([]);
   const [state, setState] = useState({
     formData: {
-      id: "User",
       text: ""
     }
   });
@@ -16,7 +15,7 @@ const BlogComments = () => {
   useEffect(() => {
     getBlog(id).then((data) => {
       setComments(data.comments);
-      console.log(data.comments);
+      console.log("consolelog of setcomments", data.comments);
     });
   }, []);
 
@@ -27,7 +26,7 @@ const BlogComments = () => {
       const res = await createComments(state.formData);
       console.log(res);
       if (res.status === 201) {
-        console.log("created");
+        console.log("created comment");
       }
     } catch (err) {
       console.error("error logging in user", err);
@@ -69,7 +68,7 @@ const BlogComments = () => {
                 <label>post new comment:</label>
                 <div>
                   <textarea
-                    name="comments"
+                    name="text"
                     type="text"
                     onChange={handleChange}
                   ></textarea>
