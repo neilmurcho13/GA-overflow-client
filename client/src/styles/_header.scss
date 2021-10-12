@@ -4,19 +4,19 @@
   --clr-bg: #ddd;
 }
 
-nav {
+header {
   border-bottom: 1px solid #ebebeb;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.nav-content {
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 90%;
 }
 
-.nav-logo {
+.header-logo {
   display: flex;
   align-items: center;
   margin: 1em;
@@ -38,7 +38,7 @@ nav {
   }
 }
 
-.nav-links {
+.header-links {
   display: flex;
 }
 
