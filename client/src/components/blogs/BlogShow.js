@@ -3,6 +3,7 @@ import { useParams, Link, useHistory } from 'react-router-dom'
 import { deleteBlog, getBlog } from '../../api/callerFunctions.js'
 import BlogComments from './BlogComments.js'
 import { getPayLoad } from '../../api/authFunctions.js'
+import { getUserById } from '../../api/callerFunctions.js'
 
 const BlogShow = () => {
   const history = useHistory()
@@ -16,6 +17,7 @@ const BlogShow = () => {
     })
   }, [])
 
+  // use later to conditionally render the delete button depending on user login
   // if the id of this user is exactly the same of the craeted id of this cheese
   // const isOwner = getPayLoad().sub === blogInfo.user._id
   // console.log('is owner is', isOwner)
@@ -54,6 +56,9 @@ const BlogShow = () => {
           <button key={tag}>{tag}</button>
         ))}
       </div> */}
+      {/* <h3 className='blog-summary'>
+        Created by : {blogInfo.createdBy.firstName}
+      </h3> */}
 
       <BlogComments />
 
