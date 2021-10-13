@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import { getToken } from '../../api/authFunctions'
 
 const BlogNew = () => {
   const [header, setHeader] = useState('')
@@ -20,7 +21,10 @@ const BlogNew = () => {
 
     fetch('http://localhost:3000/api/blogs', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${getToken()}`
+      },
       body: JSON.stringify(blog)
     }).then(() => {
       console.log('new blog added 🤖', blog)

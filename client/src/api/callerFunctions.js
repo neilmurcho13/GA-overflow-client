@@ -49,10 +49,9 @@ export const createComments = async (id, newComment) => {
     body: newComment
   }
 
-  const { data } = await axios.request(options);
-  return data;
-};
-
+  const { data } = await axios.request(options)
+  return data
+}
 
 // AUTH METHODS
 
