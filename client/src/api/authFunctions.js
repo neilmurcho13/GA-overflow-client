@@ -54,8 +54,7 @@ export const getMyProfileData = async () => {
     method: 'GET',
     url: `http://localhost:3000/api/user`,
     headers: {
-      Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTYxOWZkNTdlZGNlNjU4MDI2ZmM5ZmIiLCJpYXQiOjE2MzQwNjUzNDUsImV4cCI6MTYzNDEwODU0NX0.1kWZER8gMdflVkjGaQpIB_-C87FELaipr0kJvrWaUVg'
+      Authorization: `Bearer ${getToken()}`
     }
   }
 
