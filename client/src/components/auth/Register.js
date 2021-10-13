@@ -3,13 +3,14 @@ import { useHistory } from 'react-router-dom'
 import { registerUser } from '../../api/callerFunctions'
 
 const Register = () => {
-  const [userId, setUserId] = useState('')
   const history = useHistory()
   const [state, setState] = React.useState({
     formData: {
-      username: '',
+      firstName: '',
+      lastName: '',
       email: '',
-      password: ''
+      password: '',
+      status: ''
     }
   })
 
@@ -25,8 +26,6 @@ const Register = () => {
         console.log('before state', res.data._id)
         const currentId = res.data._id
         console.log(currentId, 'this')
-        // setUserId(currentId)
-        // console.log('current user id is', userId)
       }
     } catch (err) {
       console.error('Error registering user', err)
@@ -48,12 +47,26 @@ const Register = () => {
         <div className='auth-container'>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>username: </label>
+              <label>First name: </label>
               <div className='user-input'>
                 <input
                   className='input'
-                  name='username'
-                  value={state.formData.username}
+                  name='firstName'
+                  value={state.formData.firstName}
+                  autoComplete='off'
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label>Last name: </label>
+              <div className='user-input'>
+                <input
+                  className='input'
+                  name='lastName'
+                  value={state.formData.lastName}
                   autoComplete='off'
                   required
                   onChange={handleChange}
@@ -89,9 +102,15 @@ const Register = () => {
               </div>
             </div>
 
+            <select value={state.formData.status} onChange={handleChange}>
+              <option value='student'>student</option>
+              <option value='alumni'>alumni</option>
+              <option value='instructor'>instructor</option>
+            </select>
+
             <div className='auth-btn'>
               <input type='submit' value='Register' />
-              <i class='fa fa-user-plus'></i>
+              <i className='fa fa-user-plus'></i>
             </div>
           </form>
         </div>
