@@ -8,9 +8,11 @@ const Register = () => {
     formData: {
       firstName: '',
       lastName: '',
+      username: '',
       email: '',
       password: '',
-      status: ''
+      location: ''
+      // status: '',
     }
   })
 
@@ -75,6 +77,20 @@ const Register = () => {
             </div>
 
             <div>
+              <label>Username: </label>
+              <div className='user-input'>
+                <input
+                  className='input'
+                  name='username'
+                  value={state.formData.username}
+                  autoComplete='off'
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div>
               <label>email: </label>
               <div className='user-input'>
                 <input
@@ -102,11 +118,26 @@ const Register = () => {
               </div>
             </div>
 
-            <select value={state.formData.status} onChange={handleChange}>
+            {/* <select value={state.formData.status} onChange={handleChange}>
               <option value='student'>student</option>
               <option value='alumni'>alumni</option>
               <option value='instructor'>instructor</option>
             </select>
+            */}
+
+            <div>
+              <label>GA Location: </label>
+              <div className='user-input'>
+                <input
+                  className='input'
+                  name='location'
+                  value={state.formData.location}
+                  autoComplete='off'
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
 
             <div className='auth-btn'>
               <input type='submit' value='Register' />
