@@ -530,18 +530,57 @@ body-img {
 :root {
   font-size: 16px;
   font-family: 'Open Sans';
-  --text-primary: #b6b6b6;
+  --text-primary: #535353;
   --text-secondary: #ececec;
-  --bg-primary: #23232e;
-  --bg-secondary: #141418;
+  --bg-primary-dark: #23232e;
+  --bg-secondary-dark: #141418;
+  --bg-primary-light: #ffffff;
+  --bg-secondary-light: #141418;
+  --bg-red: rgb(235, 161, 161);
   --transition-speed: 600ms;
 }
 
 .navbar {
-  width: 5rem;
-  height: 100vh;
-  background: var(--bg-secondary);
+  width: 10rem;
+  margin-top: 5rem;
+  background: var(--bg-primary-light);
   position: fixed;
+  border-right: 2px solid var(--bg-red);
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+}
+
+.navbar:hover {
+  width: 20rem;
+}
+
+.navbar .navbar-nav {
+  height: 50vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+}
+
+.navbar .nav-link {
+  color: var(--text-primary);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+  background-color: var(--bg-red);
 }
 
 .profile-container {
