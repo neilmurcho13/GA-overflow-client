@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getToken } from "../../api/authFunctions";
-import { createComments, getBlog } from "../../api/callerFunctions";
-import CommentCard from "./CommentCard";
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useParams } from 'react-router-dom';
+import { getToken } from '../../api/authFunctions';
+import { createComments, getBlog } from '../../api/callerFunctions';
+import CommentCard from './CommentCard';
 
 const BlogComments = () => {
   const { id } = useParams();
@@ -10,48 +11,49 @@ const BlogComments = () => {
   const [comments, setComments] = useState([]);
   const [state, setState] = useState({
     formData: {
-      text: ""
-    }
+      text: '',
+    },
   });
 
   useEffect(() => {
     getBlog(id).then((data) => {
       setBlogInfo(data);
-      console.log(blogInfo);
     });
   }, []);
 
   useEffect(() => {
     getBlog(id).then((data) => {
       setComments(data.comments);
-      console.log("consolelog of setcomments", data.comments);
     });
   }, []);
 
   const handleSubmit = (e) => {
+    console.log('execute handle sub');
     e.preventDefault();
     const newComment = state.formData;
-    console.log(newComment);
 
-    fetch(`http://localhost:3000/api/blogs/${id}/comments`, {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${getToken()}`
-      },
-      body: newComment
-    }).then(() => {
-      console.log("new blog added 🤖", newComment);
-    });
+    console.log('new comment is', newComment);
+
+    axios
+      .request(`http://localhost:3000/api/blogs/${id}/comments`, {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+        data: newComment,
+      })
+      .then(() => {
+        console.log('new blog added 🤖', newComment);
+      });
   };
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     };
 
     setState({ formData });
-    console.log(formData);
   };
 
   return (
