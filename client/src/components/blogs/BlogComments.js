@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useParams } from 'react-router-dom';
-import { getToken } from '../../api/authFunctions';
-import { createComments, getBlog } from '../../api/callerFunctions';
-import CommentCard from './CommentCard';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { getToken } from "../../api/authFunctions";
+import { getBlog } from "../../api/callerFunctions";
+import CommentCard from "./CommentCard";
 
 const BlogComments = () => {
   const { id } = useParams();
-  const [blogInfo, setBlogInfo] = useState([]);
   const [comments, setComments] = useState([]);
   const [state, setState] = useState({
     formData: {
-      text: '',
-    },
+      text: ""
+    }
   });
-
-  useEffect(() => {
-    getBlog(id).then((data) => {
-      setBlogInfo(data);
-    });
-  }, []);
 
   useEffect(() => {
     getBlog(id).then((data) => {
@@ -28,29 +21,31 @@ const BlogComments = () => {
   }, []);
 
   const handleSubmit = (e) => {
-    console.log('execute handle sub');
+    console.log("execute handle sub");
     e.preventDefault();
     const newComment = state.formData;
 
-    console.log('new comment is', newComment);
+    console.log("new comment is", newComment);
 
     axios
       .request(`http://localhost:3000/api/blogs/${id}/comments`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Authorization: `Bearer ${getToken()}`,
+          Authorization: `Bearer ${getToken()}`
         },
-        data: newComment,
+        data: newComment
       })
       .then(() => {
-        console.log('new blog added 🤖', newComment);
+        console.log("new blog added 🤖", newComment);
+        location.reload();
+        console.log(comments);
       });
   };
 
   const handleChange = (e) => {
     const formData = {
       ...state.formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     };
 
     setState({ formData });
@@ -73,7 +68,7 @@ const BlogComments = () => {
           </div>
         )}
       </section>
-      <section className="main-content">
+      <section className="">
         <div>
           <div className="">
             <form onSubmit={handleSubmit}>
@@ -99,19 +94,3 @@ const BlogComments = () => {
 };
 
 export default BlogComments;
-
-//const handleSubmit = async (e) => {
-//    console.log("comment submit fired");
-//    e.preventDefault();
-//    try {
-//      const res = await createComments(state.formData);
-//      console.log(res);
-//      if (res.status === 201) {
-//        console.log("created comment");
-//      }
-//    } catch (err) {
-//      console.error("error creating comment in user", err);
-//    }
-//  };
-
-//http://localhost:3000/api/blogs/616869d88351fdedd0bce247/comments

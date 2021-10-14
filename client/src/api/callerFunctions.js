@@ -1,9 +1,9 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const getAllBlogs = async () => {
   const options = {
-    method: 'GET',
-    url: `http://localhost:3000/api/blogs`,
+    method: "GET",
+    url: `http://localhost:3000/api/blogs`
   };
 
   const { data } = await axios.request(options);
@@ -13,8 +13,8 @@ export const getAllBlogs = async () => {
 
 export const getBlog = async (id) => {
   const options = {
-    method: 'GET',
-    url: `http://localhost:3000/api/blogs/${id}`,
+    method: "GET",
+    url: `http://localhost:3000/api/blogs/${id}`
   };
 
   const { data } = await axios.request(options);
@@ -24,11 +24,11 @@ export const getBlog = async (id) => {
 
 export const searchBlogs = async (q) => {
   const options = {
-    method: 'GET',
+    method: "GET",
     url: `http://localhost:3000/api/search`,
     params: {
-      q,
-    },
+      q
+    }
   };
 
   const { data } = await axios.request(options);
@@ -38,17 +38,6 @@ export const searchBlogs = async (q) => {
 
 export const deleteBlog = (id) => {
   return axios.delete(`http://localhost:3000/api/blogs/${id}`);
-};
-
-export const createComments = async (id, newComment) => {
-  const options = {
-    method: 'POST',
-    url: `http://localhost:3000/api/blogs/${id}/comments`,
-    body: newComment,
-  };
-
-  const { data } = await axios.request(options);
-  return data;
 };
 
 // AUTH METHODS
