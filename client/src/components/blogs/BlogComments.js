@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getToken } from "../../api/authFunctions";
 import { createComments, getBlog } from "../../api/callerFunctions";
 import CommentCard from "./CommentCard";
 
 const BlogComments = () => {
   const { id } = useParams();
+  const [blogInfo, setBlogInfo] = useState([]);
   const [comments, setComments] = useState([]);
   const [state, setState] = useState({
     formData: {
@@ -14,23 +16,32 @@ const BlogComments = () => {
 
   useEffect(() => {
     getBlog(id).then((data) => {
+      setBlogInfo(data);
+      console.log(blogInfo);
+    });
+  }, []);
+
+  useEffect(() => {
+    getBlog(id).then((data) => {
       setComments(data.comments);
       console.log("consolelog of setcomments", data.comments);
     });
   }, []);
 
-  const handleSubmit = async (e) => {
-    console.log("login submit fired");
+  const handleSubmit = (e) => {
     e.preventDefault();
-    try {
-      const res = await createComments(state.formData);
-      console.log(res);
-      if (res.status === 201) {
-        console.log("created comment");
-      }
-    } catch (err) {
-      console.error("error logging in user", err);
-    }
+    const newComment = state.formData;
+    console.log(newComment);
+
+    fetch(`http://localhost:3000/api/blogs/${id}/comments`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${getToken()}`
+      },
+      body: newComment
+    }).then(() => {
+      console.log("new blog added 🤖", newComment);
+    });
   };
 
   const handleChange = (e) => {
@@ -86,3 +97,19 @@ const BlogComments = () => {
 };
 
 export default BlogComments;
+
+//const handleSubmit = async (e) => {
+//    console.log("comment submit fired");
+//    e.preventDefault();
+//    try {
+//      const res = await createComments(state.formData);
+//      console.log(res);
+//      if (res.status === 201) {
+//        console.log("created comment");
+//      }
+//    } catch (err) {
+//      console.error("error creating comment in user", err);
+//    }
+//  };
+
+//http://localhost:3000/api/blogs/616869d88351fdedd0bce247/comments
