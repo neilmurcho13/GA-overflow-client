@@ -332,6 +332,13 @@ header {
   margin-right: 1em;
   font-size: 1.8em;
   color: #be9c9c;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.social-links i:hover {
+  color: #d24a4a;
 }
 
 .blog-summary {
