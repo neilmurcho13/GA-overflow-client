@@ -11,6 +11,7 @@ const BlogShow = () => {
   const [blogInfo, setBlogInfo] = useState([]);
   const [createdBy, setCreatedBy] = useState([]);
 
+
   useEffect(() => {
     getBlog(id).then((data) => {
       setBlogInfo(data);
@@ -24,6 +25,13 @@ const BlogShow = () => {
       console.log("consolelog of created", data.createdBy);
     });
   }, []);
+
+  useEffect(() => {
+    getBlog(id).then((data) => {
+      setCreatedBy(data.createdBy)
+      console.log('consolelog of created', data.createdBy)
+    })
+  }, [])
 
   // use later to conditionally render the delete button depending on user login
   // if the id of this user is exactly the same of the craeted id of this cheese
@@ -40,14 +48,26 @@ const BlogShow = () => {
   };
 
   return (
-    <div className="main-content">
-      <img src={blogInfo.headerImgUrl} className="blog-header-img" />
-      <h1 className="blog-title">{blogInfo.header}</h1>
-      <div className="social-links">
-        <i className="fab fa-twitter-square"></i>
-        <i className="fab fa-instagram"></i>
-        <i className="fab fa-linkedin"></i>
-        <i className="fab fa-github-square"></i>
+
+    <div className='main-content'>
+      <img src={blogInfo.headerImgUrl} className='blog-header-img' />
+      <h1 className='blog-title'>{blogInfo.header}</h1>
+      <div className='social-links'>
+        <a
+          href={createdBy.linkedinLink}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <i className='fab fa-linkedin'></i>
+        </a>
+        <a
+          href={createdBy.githubLink}
+          target='_blank'
+          rel='noopener noreferrer'
+        >
+          <i className='fab fa-github-square'></i>
+        </a>
+
       </div>
       <h3 className="blog-summary">{blogInfo.summary}</h3>
       <hr />

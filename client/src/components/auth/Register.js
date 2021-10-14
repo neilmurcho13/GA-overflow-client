@@ -11,7 +11,9 @@ const Register = () => {
       username: '',
       email: '',
       password: '',
-      location: ''
+      location: '',
+      githubLink: '',
+      linkedinLink: ''
       // status: '',
     }
   })
@@ -132,6 +134,33 @@ const Register = () => {
                   className='input'
                   name='location'
                   value={state.formData.location}
+                  autoComplete='off'
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+
+            <div>
+              <label>Github: </label>
+              <div className='user-input'>
+                <input
+                  className='input'
+                  name='githubLink'
+                  value={state.formData.githubLink}
+                  autoComplete='off'
+                  required
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div>
+              <label>LinkedIn: </label>
+              <div className='user-input'>
+                <input
+                  className='input'
+                  name='linkedinLink'
+                  value={state.formData.linkedinLink}
                   autoComplete='off'
                   required
                   onChange={handleChange}
