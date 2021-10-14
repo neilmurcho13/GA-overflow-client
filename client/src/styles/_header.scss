@@ -1,19 +1,22 @@
 :root {
-  --clr-primary: #ee6352;
-  --clr-body: #333;
+  // --header-bg: #ee6352;
+  --header-bg-dark: hsl(0, 0%, 15%);
+  --header-bg-light: hsl(0, 0%, 94%);
   --clr-bg: #ddd;
 }
 
 header {
-  border-bottom: 1px solid #ebebeb;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background: var(--header-bg-light);
+  display: flex;
+  justify-content: space-between;
 }
 
 .header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 90%;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  // width: 90%;
 }
 
 .header-logo {
@@ -47,12 +50,12 @@ header {
   display: flex;
   align-items: center;
   margin-right: 1em;
-  box-shadow: rgba(238, 27, 27, 0.4) -6px 5px,
-    rgba(184, 74, 74, 0.3) -10px 10px;
   input {
     padding: 0.9em 2em;
-    border: 3px solid black;
+    border: 2px solid rgb(252, 156, 156);
     transform: translateY(1px);
+    box-shadow: rgba(238, 27, 27, 0.4) -6px 5px,
+      rgba(184, 74, 74, 0.3) -10px 10px;
   }
   i {
     position: absolute;
@@ -63,14 +66,12 @@ header {
 }
 
 .create-post {
-  width: 50px;
   display: flex;
   align-items: center;
   cursor: pointer;
-  margin-right: 3em;
   div {
     padding: 0.5em 2em;
-    border: 3px solid black;
+    border: 2px solid #be6fff;
     white-space: nowrap;
     color: #1e0d2c;
     background: #d29aff;
@@ -87,14 +88,12 @@ header {
 }
 
 .my-profile {
-  width: 50px;
-  margin-left: 4.5em;
   display: flex;
   align-items: center;
-
+  margin: 0 1rem;
   div {
     padding: 0.5em 2em;
-    border: 3px solid black;
+    border: 2px solid #00ffbf;
     white-space: nowrap;
     text-align: center;
     color: #083328;
