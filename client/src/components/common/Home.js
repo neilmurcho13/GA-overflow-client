@@ -20,7 +20,22 @@ const Home = () => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
-      <h1 className='latest-header'>Latest</h1>
+      <div className='header-container'>
+        <motion.h1
+          className='latest-header'
+          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: 150, opacity: 0 }}
+          transition={{ type: 'tween', duration: 2 }}
+        >
+          Latest
+        </motion.h1>
+        <motion.div
+          className='latest-header-line'
+          animate={{ x: 0, opacity: 1 }}
+          initial={{ x: -900, opacity: 0 }}
+          transition={{ type: 'tween', duration: 2 }}
+        ></motion.div>
+      </div>
       {isLoading && <h2>Loading...</h2>}
       {blogs && (
         <div className='blog-card-container'>

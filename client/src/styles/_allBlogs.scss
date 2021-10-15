@@ -1,3 +1,10 @@
+:root {
+  --card-bg: hsl(0, 100%, 97%);
+  --card-bg-shadow: hsl(0, 100%, 75%);
+  --ga-red: #ed1c24;
+  font-size: 16px;
+}
+
 .allblogs-content {
   display: flex;
   flex-direction: column;
@@ -15,5 +22,12 @@
 }
 
 .allblogs-header {
-  margin: 2rem 0;
+  margin: 3rem 0 0 0;
+  color: var(--ga-red);
+}
+
+@media only screen and (max-width: 1050px) {
+  .allblogs-card-container {
+    grid-template-columns: 1fr;
+  }
 }
