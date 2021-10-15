@@ -55,6 +55,8 @@ body {
   display: -ms-flexbox;
   display: flex;
   height: clamp(160px, 200px, 250px);
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
 }
 
 .info-container {
@@ -174,7 +176,7 @@ body {
   margin: 0 0.3em;
 }
 
-@media only screen and (max-width: 1310px) {
+@media only screen and (max-width: 1420px) {
   .blog-body-container {
     display: none;
   }
@@ -190,7 +192,6 @@ body {
         -ms-flex-direction: column;
             flex-direction: column;
     gap: 3rem;
-    background: blue;
     width: 100%;
   }
   .blog-card {
@@ -643,12 +644,12 @@ body-img {
   background-color: var(--bg-red);
 }
 
-@media only screen and (max-width: 1210px) {
+@media only screen and (max-width: 1440px) {
   .navbar {
-    width: 6rem;
+    width: 9rem;
   }
   .navbar:hover {
-    width: 6rem;
+    width: 9rem;
   }
 }
 
@@ -685,9 +686,21 @@ body-img {
 }
 
 .allblogs-content {
-  width: 70vw;
-  margin-top: 3em;
-  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  margin-top: 1em;
+  margin: 1rem 1rem auto auto;
 }
 
 .allblogs-card-container {
@@ -695,10 +708,11 @@ body-img {
   display: grid;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-auto-flow: row;
+  gap: 3rem;
 }
 
 .allblogs-header {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
 /*# sourceMappingURL=main.css.map */
