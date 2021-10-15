@@ -1,4 +1,10 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+const handleLogout = () => {
+  localStorage.clear('token')
+  console.log('logged out')
+}
 
 const Navbar = () => {
   return (
@@ -6,7 +12,9 @@ const Navbar = () => {
       <ul className='navbar-nav'>
         <li className='nav-link'>All blogs</li>
         <li className='nav-link'>Project Recruiter</li>
-        <li className='nav-link'>Logout</li>
+        <Link to='/' className='nav-link' onClick={handleLogout}>
+          Logout
+        </Link>
       </ul>
     </nav>
   )
