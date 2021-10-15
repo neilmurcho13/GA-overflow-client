@@ -847,6 +847,7 @@ footer {
   display: -ms-grid;
   display: grid;
   padding: 3rem;
+  margin-top: 2em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
