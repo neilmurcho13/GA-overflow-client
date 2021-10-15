@@ -1,6 +1,7 @@
 :root {
   --card-bg: hsl(0, 100%, 97%);
   --card-bg-shadow: hsl(0, 100%, 75%);
+  --ga-red: #ed1c24;
   font-size: 16px;
 }
 
@@ -9,8 +10,21 @@
   margin-top: 3em;
 }
 
+.header-container {
+  margin-bottom: 3rem;
+  overflow-x: hidden;
+}
+
 .latest-header {
-  margin: 3rem 0;
+  margin: 3rem 0 0 0;
+  color: var(--ga-red);
+}
+
+.latest-header-line {
+  height: 0.3em;
+  background: var(--ga-red);
+  border-top-right-radius: 5em;
+  border-bottom-right-radius: 5em;
 }
 
 .blog-card-container {

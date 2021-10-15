@@ -54,3 +54,10 @@
     }
   }
 }
+
+// later fix --> send nav to bottom
+@media only screen and (max-width: 700px) {
+  .navbar {
+    display: none;
+  }
+}
