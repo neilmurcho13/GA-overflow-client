@@ -30,6 +30,7 @@ const BlogShow = () => {
   }, [])
 
   const isOwner = getPayLoad().sub === createdBy._id
+  console.log(isOwner)
 
   const handleDelete = async () => {
     try {

@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
+import { isLoggedIn, getToken } from '../../api/authFunctions'
 import gaLogo from '../../assets/ga-logo.png'
 
 const Header = ({ onSearchChange }) => {
   const history = useHistory()
   const [searchInputVaule, setSearchInputValue] = useState('')
+  const [userLoggedIn, setUseLoggedIn] = useState(false)
 
   const handleSearch = (e) => {
     e.preventDefault()
     onSearchChange(searchInputVaule)
     history.push('/search')
   }
+
+  // to check if the user is logged in to conditionally render header links
+  // ! not re-rendering on login / logout
+  useEffect(() => {
+    getToken() ? setUseLoggedIn(true) : setUseLoggedIn(false)
+  }, [userLoggedIn])
 
   return (
     <>
@@ -34,14 +42,29 @@ const Header = ({ onSearchChange }) => {
             <i className='fas fa-search'></i>
           </form>
 
-          <Link to='/blogs/new' className='create-post'>
-            <div>create post</div>
-            <i className='fas fa-pencil-alt'></i>
-          </Link>
-          <Link to='/user/profile' className='my-profile'>
-            <div>my profile</div>
-            <i className='far fa-user'></i>
-          </Link>
+          {userLoggedIn ? (
+            <>
+              <Link to='/blogs/new' className='create-post'>
+                <div>create post</div>
+                <i className='fas fa-pencil-alt'></i>
+              </Link>
+              <Link to='/user/profile' className='my-profile'>
+                <div>my profile</div>
+                <i className='far fa-user'></i>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link to='/login' className='create-post'>
+                <div>login</div>
+                <i className='fas fa-pencil-alt'></i>
+              </Link>
+              <Link to='/register' className='my-profile'>
+                <div>register</div>
+                <i className='far fa-user'></i>
+              </Link>
+            </>
+          )}
         </div>
       </header>
     </>
