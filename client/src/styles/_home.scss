@@ -27,6 +27,7 @@
   box-shadow: -6px 6px 0px 0px var(--card-bg-shadow);
   display: flex;
   height: clamp(160px, 200px, 250px);
+  transition: 0.3s ease;
 }
 
 .info-container {
@@ -103,7 +104,7 @@
   }
 }
 
-@media only screen and (max-width: 1310px) {
+@media only screen and (max-width: 1420px) {
   .blog-body-container {
     display: none;
   }
@@ -113,7 +114,6 @@
     align-items: flex-end;
     flex-direction: column;
     gap: 3rem;
-    background: blue;
     width: 100%;
   }
   .blog-card {

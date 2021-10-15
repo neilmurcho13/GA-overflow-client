@@ -1,15 +1,19 @@
 .allblogs-content {
-  width: 70vw;
-  margin-top: 3em;
-  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  margin-top: 1em;
+  margin: 1rem 1rem auto auto;
 }
 
 .allblogs-card-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-auto-flow: row;
+  gap: 3rem;
 }
 
 .allblogs-header {
-  margin: 3rem 0;
+  margin: 2rem 0;
 }
