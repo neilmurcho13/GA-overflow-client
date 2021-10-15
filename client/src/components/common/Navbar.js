@@ -11,12 +11,17 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       <ul className='navbar-nav'>
-        <Link to='/blogs/all' className='nav-link'>
-          All blogs
+        <Link to='/'>
+          <li className='nav-link'>Latest</li>
         </Link>
-        <li className='nav-link'>Project Recruiter</li>
-        <Link to='/' className='nav-link' onClick={handleLogout}>
-          Logout
+        <Link to='/blogs/all'>
+          <li className='nav-link'>All</li>
+        </Link>
+        <Link to='/recuiter'>
+          <li className='nav-link'>Recruiter</li>
+        </Link>
+        <Link to='/' onClick={handleLogout}>
+          <li className='nav-link'>Logout</li>
         </Link>
       </ul>
     </nav>
