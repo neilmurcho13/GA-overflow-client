@@ -13,6 +13,7 @@ import Error404 from './components/common/Error404.js'
 import Navbar from './components/common/Navbar.js'
 import MyProfile from './components/common/myProfile.js'
 import AllBlogs from './components/blogs/AllBlogs.js'
+import Footer from './components/common/Footer.js'
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -41,6 +42,7 @@ const App = () => {
           <Error404 />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   )
 }

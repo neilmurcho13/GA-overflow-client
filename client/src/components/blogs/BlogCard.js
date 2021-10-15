@@ -24,7 +24,7 @@ const BlogCard = ({ id, header, headerImgUrl, body }) => {
             <i className='fa fa-thumbs-up'></i>
             <p>54</p>
           </div>
-          <div className='comments-container'>
+          <div className='blog-card-comments-container'>
             <i className='fa fa-comments'></i>
             <p>12</p>
           </div>

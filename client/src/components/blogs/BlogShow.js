@@ -3,7 +3,6 @@ import { useParams, Link, useHistory } from 'react-router-dom'
 import { deleteBlog, getBlog } from '../../api/callerFunctions.js'
 import BlogComments from './BlogComments.js'
 import { getPayLoad } from '../../api/authFunctions.js'
-import { getUserById } from '../../api/callerFunctions.js'
 
 const BlogShow = () => {
   const history = useHistory()

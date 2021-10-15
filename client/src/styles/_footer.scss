@@ -1,0 +1,15 @@
+:root {
+  --bg-clr: #001220;
+  --h2-clr: rgb(233, 183, 183);
+}
+
+footer {
+  display: grid;
+  padding: 3rem;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-clr);
+  h2 {
+    color: var(--h2-clr);
+  }
+}
