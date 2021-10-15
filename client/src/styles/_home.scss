@@ -42,6 +42,9 @@
   display: flex;
   height: clamp(160px, 200px, 250px);
   transition: 0.3s ease;
+  &:hover {
+    transform: translateY(-5px);
+  }
 }
 
 .info-container {
@@ -86,8 +89,8 @@
     .blog-card-btn {
       display: flex;
       align-items: center;
-      height: 1.5em;
-      padding: 0em 0.5em;
+      height: 1.8em;
+      padding: 0em 1em;
       margin: 5px 0;
       align-items: center;
       background: #1ce0ed;
@@ -96,8 +99,9 @@
       border-radius: 1px;
       font-size: 1em;
       font-weight: 600;
+      white-space: nowrap;
     }
-    .comments-container {
+    .blog-card-comments-container {
       display: flex;
       align-items: center;
       font-size: 0.8em;
