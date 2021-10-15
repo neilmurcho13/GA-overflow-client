@@ -18,6 +18,7 @@ const Register = () => {
     },
   });
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -118,12 +119,15 @@ const Register = () => {
               </div>
             </div>
 
-            {/* <select value={state.formData.status} onChange={handleChange}>
-              <option value='student'>student</option>
-              <option value='alumni'>alumni</option>
-              <option value='instructor'>instructor</option>
-            </select>
-            */}
+            {/* <select
+              onChange={handleChange}
+              name='status'
+              value={setSelectOption}
+            >
+              <option value={state.formData.status}>student</option>
+              <option value={state.formData.status}>alumni</option>
+              <option value={state.formData.status}>instructor</option>
+            </select> */}
 
             <div>
               <label>GA Location: </label>
