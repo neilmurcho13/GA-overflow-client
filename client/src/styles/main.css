@@ -786,10 +786,26 @@ body-img {
 }
 
 .profile-container {
-  min-height: 100vh;
+  min-height: 72vh;
   display: -ms-grid;
   display: grid;
   place-content: center;
+}
+
+.profile-container h2 {
+  width: 600px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-right: 1em;
+  background: #eedcdc;
+  -webkit-box-shadow: rgba(238, 27, 27, 0.4) -5px 5px, rgba(184, 74, 74, 0.3) -10px 10px;
+          box-shadow: rgba(238, 27, 27, 0.4) -5px 5px, rgba(184, 74, 74, 0.3) -10px 10px;
+  margin-top: 0.31em;
+  margin-bottom: 1em;
 }
 
 :root {
@@ -847,6 +863,7 @@ footer {
   display: -ms-grid;
   display: grid;
   padding: 3rem;
+  margin-top: 2em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

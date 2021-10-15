@@ -9,10 +9,12 @@ const BlogShow = () => {
   const { id } = useParams()
   const [blogInfo, setBlogInfo] = useState([])
   const [createdBy, setCreatedBy] = useState([])
+  const [date, setDate] = useState('')
 
   useEffect(() => {
     getBlog(id).then((data) => {
       setBlogInfo(data)
+      setDate(data.createdAt)
     })
   }, [])
 
@@ -22,11 +24,13 @@ const BlogShow = () => {
     })
   }, [])
 
-  useEffect(() => {
-    getBlog(id).then((data) => {
-      setCreatedBy(data.createdBy)
-    })
-  }, [])
+  // useEffect(() => {
+  //   getBlog(id).then((data) => {
+  //     setCreatedBy(data.createdBy)
+  //   })
+  // }, [])
+
+  console.log('THIS BLOG DATE', date)
 
   const isOwner = getPayLoad().sub === createdBy._id
   console.log(isOwner)
@@ -44,6 +48,13 @@ const BlogShow = () => {
     <div className='main-content'>
       <img src={blogInfo.headerImgUrl} className='blog-header-img' />
       <h1 className='blog-title'>{blogInfo.header}</h1>
+
+      <div className='blog-show-author'>
+        <span>by</span>
+        <h3>{createdBy.username}</h3>
+      </div>
+      <div className='blog-show-date'>{blogInfo.createdAt}</div>
+
       <div className='social-links'>
         <a
           href={createdBy.linkedinLink}
@@ -75,9 +86,6 @@ const BlogShow = () => {
           <button key={tag}>{tag}</button>
         ))}
       </div> */}
-
-      <div>Posted by: {createdBy.username}</div>
-      <div>Posted on: {blogInfo.createdAt}</div>
 
       <BlogComments />
 
