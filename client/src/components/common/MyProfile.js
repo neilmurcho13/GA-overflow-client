@@ -7,10 +7,10 @@ const MyProfile = () => {
   useEffect(() => {
     getMyProfileData().then((data) => {
       setProfileData(data)
-      console.log(data)
     })
   }, [])
 
+  console.log('users profile data', profileData)
   return (
     <div className='profile-container'>
       <h2>Current user username : {profileData.username}</h2>
@@ -18,6 +18,7 @@ const MyProfile = () => {
       <h2>Current user first name : {profileData.firstName}</h2>
       <h2>Current user last name : {profileData.lastName}</h2>
       <h2>Current user location : {profileData.location}</h2>
+      <h2>Current user status : {profileData.status}</h2>
     </div>
   )
 }
