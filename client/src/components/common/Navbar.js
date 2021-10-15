@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 const handleLogout = () => {
   localStorage.clear('token')
+  location.reload()
   console.log('logged out')
 }
 

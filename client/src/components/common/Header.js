@@ -6,7 +6,7 @@ import gaLogo from '../../assets/ga-logo.png'
 const Header = ({ onSearchChange }) => {
   const history = useHistory()
   const [searchInputVaule, setSearchInputValue] = useState('')
-  const [userLoggedIn, setUseLoggedIn] = useState(false)
+  const [userLoggedIn, setUseLoggedIn] = useState(null)
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -15,10 +15,9 @@ const Header = ({ onSearchChange }) => {
   }
 
   // to check if the user is logged in to conditionally render header links
-  // ! not re-rendering on login / logout
   useEffect(() => {
     getToken() ? setUseLoggedIn(true) : setUseLoggedIn(false)
-  }, [userLoggedIn])
+  }, [])
 
   return (
     <>
