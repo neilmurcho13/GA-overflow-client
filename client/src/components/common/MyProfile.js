@@ -18,12 +18,11 @@ const MyProfile = () => {
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
-      <h2>Current user username : {profileData.username}</h2>
-      <h2>Current user ID : {profileData._id}</h2>
-      <h2>Current user first name : {profileData.firstName}</h2>
-      <h2>Current user last name : {profileData.lastName}</h2>
-      <h2>Current user location : {profileData.location}</h2>
-      <h2>Current user status : {profileData.status}</h2>
+      <h2>Username : {profileData.username}</h2>
+      <h2>First name : {profileData.firstName}</h2>
+      <h2>Last name : {profileData.lastName}</h2>
+      <h2>Current location : {profileData.location}</h2>
+      <h2>User status : {profileData.status}</h2>
     </motion.div>
   )
 }
