@@ -1,41 +1,42 @@
-import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
-import { getToken } from '../../api/authFunctions'
-import { motion } from 'framer-motion'
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { getToken } from "../../api/authFunctions";
+import { motion } from "framer-motion";
 
 const BlogNew = () => {
-  const [header, setHeader] = useState('')
-  const [headerImgUrl, setHeaderImgUrl] = useState('')
-  const [body, setBody] = useState('')
-  const [summary, setSummary] = useState('')
-  const [bodyImgUrl, setBodyImgUrl] = useState('')
+  const [header, setHeader] = useState("");
+  const [headerImgUrl, setHeaderImgUrl] = useState("");
+  const [body, setBody] = useState("");
+  const [summary, setSummary] = useState("");
+  const [bodyImgUrl, setBodyImgUrl] = useState("");
 
-  const [isPending, setIsPending] = useState(false)
+  const [isPending, setIsPending] = useState(false);
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const blog = { header, headerImgUrl, body, summary, bodyImgUrl }
+    e.preventDefault();
+    const blog = { header, headerImgUrl, body, summary, bodyImgUrl };
 
-    setIsPending(true)
+    setIsPending(true);
 
-    fetch('http://localhost:3000/api/blogs', {
-      method: 'POST',
+    fetch("http://localhost:3000/api/blogs", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${getToken()}`
       },
       body: JSON.stringify(blog)
     }).then(() => {
-      setIsPending(false)
-    })
-    history.push('/')
-  }
+      setIsPending(false);
+    });
+    history.push("/");
+    location.reload();
+  };
 
   return (
     <motion.div
-      className='create-container'
+      className="create-container"
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
     >
@@ -43,47 +44,47 @@ const BlogNew = () => {
       <form onSubmit={handleSubmit}>
         <label>Blog Header*</label>
         <input
-          type='text'
+          type="text"
           required
           value={header}
           onChange={(e) => setHeader(e.target.value)}
-          placeholder='...'
+          placeholder="..."
         />
         <label>Header Image*</label>
         <input
-          type='text'
+          type="text"
           required
           value={headerImgUrl}
           onChange={(e) => setHeaderImgUrl(e.target.value)}
-          placeholder='copy + paste image address url'
+          placeholder="copy + paste image address url"
         />
         <label>Blog body* </label>
         <textarea
           required
           value={body}
           onChange={(e) => setBody(e.target.value)}
-          placeholder='...'
+          placeholder="..."
         ></textarea>
         <label>Blog sub-header* </label>
         <textarea
           required
           value={summary}
           onChange={(e) => setSummary(e.target.value)}
-          placeholder='...'
+          placeholder="..."
         ></textarea>
         <label>Body Image*</label>
         <input
-          type='text'
+          type="text"
           required
           value={bodyImgUrl}
           onChange={(e) => setBodyImgUrl(e.target.value)}
-          placeholder='copy + paste image address url'
+          placeholder="copy + paste image address url"
         />
         {!isPending && <button>Add blog</button>}
         {isPending && <button disabled>Creating blog</button>}
       </form>
     </motion.div>
-  )
-}
+  );
+};
 
-export default BlogNew
+export default BlogNew;
