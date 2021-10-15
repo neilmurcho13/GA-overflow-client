@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useHistory, Link } from 'react-router-dom'
 import { setToken } from '../../api/authFunctions'
 import { loginUser } from '../../api/callerFunctions'
+import { motion } from 'framer-motion'
 import Register from './Register'
 
 const Login = () => {
@@ -40,7 +41,7 @@ const Login = () => {
 
   return (
     <section className='main-content'>
-      <div>
+      <motion.div animate={{ opacity: 1 }} initial={{ opacity: 0 }}>
         <div className='auth-container'>
           <form onSubmit={handleSubmit}>
             <div>
@@ -81,7 +82,7 @@ const Login = () => {
             </div>
           </form>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
