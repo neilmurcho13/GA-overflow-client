@@ -1,0 +1,15 @@
+.allblogs-content {
+  width: 70vw;
+  margin-top: 3em;
+  margin-left: auto;
+}
+
+.allblogs-card-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.allblogs-header {
+  margin: 3rem 0;
+}

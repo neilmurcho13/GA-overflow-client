@@ -37,3 +37,12 @@
     }
   }
 }
+
+@media only screen and (max-width: 1210px) {
+  .navbar {
+    width: 6rem;
+    &:hover {
+      width: 6rem;
+    }
+  }
+}

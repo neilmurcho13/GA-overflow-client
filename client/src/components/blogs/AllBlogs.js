@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { getAllBlogs } from '../../api/callerFunctions.js'
-import BlogCard from '../blogs/BlogCard.js'
+import { getAllBlogs } from '../../api/callerFunctions'
+import BlogCard from './BlogCard'
 
-const Home = () => {
+const AllBlogs = () => {
   const [blogs, setBlogs] = useState([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -14,11 +14,11 @@ const Home = () => {
   }, [])
 
   return (
-    <div className='main-content'>
-      <h1 className='latest-header'>Latest</h1>
+    <div className='allblogs-content'>
+      <h1 className='allblogs-header'>All blogs</h1>
       {isLoading && <h2>Loading...</h2>}
       {blogs && (
-        <div className='blog-card-container'>
+        <div className='allblogs-card-container'>
           {blogs
             .slice(0)
             .reverse()
@@ -37,4 +37,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default AllBlogs

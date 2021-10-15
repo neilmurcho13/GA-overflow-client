@@ -14,7 +14,7 @@ const BlogCard = ({ id, header, headerImgUrl, body }) => {
           <h3>13th Oct 2021</h3>
         </div>
         <p className='blog-body-container'>
-          {body.split(' ').slice(0, 20).join(' ')}...
+          {body.split(' ').slice(0, 10).join(' ')}...
         </p>
         <div className='links-container'>
           <Link to={`/blogs/${id}`} className='blog-card-btn'>
@@ -34,7 +34,7 @@ const BlogCard = ({ id, header, headerImgUrl, body }) => {
         <img
           className='card-image'
           src={headerImgUrl}
-          style={{ width: '225px', height: '160px' }}
+          style={{ width: '225px', height: '200px' }}
         />
       </div>
     </div>
