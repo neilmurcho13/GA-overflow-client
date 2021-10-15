@@ -5,20 +5,18 @@ import BlogComments from "./BlogComments.js";
 import { getPayLoad } from "../../api/authFunctions.js";
 
 const BlogShow = () => {
-
-  const history = useHistory()
-  const { id } = useParams()
-  const [blogInfo, setBlogInfo] = useState([])
-  const [createdBy, setCreatedBy] = useState([])
-  const [date, setDate] = useState('')
+  const history = useHistory();
+  const { id } = useParams();
+  const [blogInfo, setBlogInfo] = useState([]);
+  const [createdBy, setCreatedBy] = useState([]);
+  const [date, setDate] = useState("");
 
   useEffect(() => {
     getBlog(id).then((data) => {
-      setBlogInfo(data)
-      setDate(data.createdAt)
-    })
-  }, [])
-
+      setBlogInfo(data);
+      setDate(data.createdAt);
+    });
+  }, []);
 
   useEffect(() => {
     getBlog(id).then((data) => {
@@ -26,18 +24,15 @@ const BlogShow = () => {
     });
   }, []);
 
-
   // useEffect(() => {
   //   getBlog(id).then((data) => {
   //     setCreatedBy(data.createdBy)
   //   })
   // }, [])
 
-  console.log('THIS BLOG DATE', date)
-
+  console.log("THIS BLOG DATE", date);
 
   const isOwner = getPayLoad().userId === createdBy._id;
-
 
   const handleDelete = async () => {
     const blogIdToDelete = id;
@@ -49,23 +44,18 @@ const BlogShow = () => {
     }
   };
 
-  const d = new Date(blogInfo.createdAt);
-  const date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
-
   return (
+    <div className="main-content">
+      <img src={blogInfo.headerImgUrl} className="blog-header-img" />
+      <h1 className="blog-title">{blogInfo.header}</h1>
 
-    <div className='main-content'>
-      <img src={blogInfo.headerImgUrl} className='blog-header-img' />
-      <h1 className='blog-title'>{blogInfo.header}</h1>
-
-      <div className='blog-show-author'>
+      <div className="blog-show-author">
         <span>by</span>
         <h3>{createdBy.username}</h3>
       </div>
-      <div className='blog-show-date'>{blogInfo.createdAt}</div>
+      <div className="blog-show-date">{blogInfo.createdAt}</div>
 
-      <div className='social-links'>
-
+      <div className="social-links">
         <a
           href={createdBy.linkedinLink}
           target="_blank"
@@ -97,10 +87,8 @@ const BlogShow = () => {
         ))}
       </div> */}
 
-
       <div>Posted by: {createdBy.username}</div>
-      <div>Posted on: {date}</div>
-
+      <div>Posted on: {blogInfo.createdAt}</div>
 
       <BlogComments />
 
