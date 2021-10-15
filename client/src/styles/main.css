@@ -14,6 +14,12 @@ html {
 body {
   overflow-x: hidden;
   font-family: 'Open Sans', sans-serif;
+  background: #ece9e6;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, right top, left top, from(#ffffff), to(#ece9e6));
+  background: linear-gradient(to left, #ffffff, #ece9e6);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 :root {
@@ -597,22 +603,24 @@ body-img {
   --bg-secondary-dark: #141418;
   --bg-primary-light: #ffffff;
   --bg-secondary-light: #141418;
-  --bg-red: rgb(235, 161, 161);
+  --border-light-red: hsl(0, 33%, 81%);
+  --bg-light: rgba(255, 251, 213, 0.1);
+  --ga-red: #ed1c24;
   --transition-speed: 600ms;
 }
 
 .navbar {
   width: 10rem;
   margin-top: 5rem;
-  background: var(--bg-primary-light);
+  background: transparent;
   position: fixed;
-  border-right: 2px solid var(--bg-red);
+  border-right: 1px solid var(--border-light-red);
   -webkit-transition: width 0.4s ease;
   transition: width 0.4s ease;
 }
 
 .navbar:hover {
-  width: 20rem;
+  width: 15rem;
 }
 
 .navbar .navbar-nav {
@@ -636,12 +644,17 @@ body-img {
 
 .navbar .nav-link {
   color: var(--text-primary);
-  -webkit-transition: 0.3s ease;
-  transition: 0.3s ease;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+  font-size: 1.2em;
+  font-weight: 500;
+  padding: 1rem;
 }
 
 .navbar .nav-link:hover {
-  background-color: var(--bg-red);
+  background-color: var(--ga-red);
+  border-radius: 20px;
+  color: #eee;
 }
 
 @media only screen and (max-width: 1440px) {

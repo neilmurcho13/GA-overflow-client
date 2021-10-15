@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getAllBlogs } from '../../api/callerFunctions'
 import BlogCard from './BlogCard'
+import { motion } from 'framer-motion'
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState([])
@@ -14,7 +15,11 @@ const AllBlogs = () => {
   }, [])
 
   return (
-    <div className='allblogs-content'>
+    <motion.div
+      className='allblogs-content'
+      animate={{ opacity: 1 }}
+      initial={{ opacity: 0 }}
+    >
       <h1 className='allblogs-header'>All blogs</h1>
       {isLoading && <h2>Loading...</h2>}
       {blogs && (
@@ -33,7 +38,7 @@ const AllBlogs = () => {
             ))}
         </div>
       )}
-    </div>
+    </motion.div>
   )
 }
 

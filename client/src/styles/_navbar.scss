@@ -7,19 +7,21 @@
   --bg-secondary-dark: #141418;
   --bg-primary-light: #ffffff;
   --bg-secondary-light: #141418;
-  --bg-red: rgb(235, 161, 161);
+  --border-light-red: hsl(0, 33%, 81%);
+  --bg-light: rgba(255, 251, 213, 0.1);
+  --ga-red: #ed1c24;
   --transition-speed: 600ms;
 }
 
 .navbar {
   width: 10rem;
   margin-top: 5rem;
-  background: var(--bg-primary-light);
+  background: transparent;
   position: fixed;
-  border-right: 2px solid var(--bg-red);
+  border-right: 1px solid var(--border-light-red);
   transition: width 0.4s ease;
   &:hover {
-    width: 20rem;
+    width: 15rem;
   }
   .navbar-nav {
     height: 50vh;
@@ -31,9 +33,15 @@
   }
   .nav-link {
     color: var(--text-primary);
-    transition: 0.3s ease;
+    transition: 0.5s ease;
+    font-size: 1.2em;
+    font-weight: 500;
+
+    padding: 1rem;
     &:hover {
-      background-color: var(--bg-red);
+      background-color: var(--ga-red);
+      border-radius: 20px;
+      color: #eee;
     }
   }
 }
