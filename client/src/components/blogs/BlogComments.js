@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useParams } from "react-router-dom";
-import { createComments, getBlog } from "../../api/callerFunctions";
+import { getToken } from "../../api/authFunctions";
+import { getBlog } from "../../api/callerFunctions";
 import CommentCard from "./CommentCard";
 
 const BlogComments = () => {
@@ -15,22 +17,29 @@ const BlogComments = () => {
   useEffect(() => {
     getBlog(id).then((data) => {
       setComments(data.comments);
-      console.log("consolelog of setcomments", data.comments);
     });
   }, []);
 
-  const handleSubmit = async (e) => {
-    console.log("login submit fired");
+  const handleSubmit = (e) => {
+    console.log("execute handle sub");
     e.preventDefault();
-    try {
-      const res = await createComments(state.formData);
-      console.log(res);
-      if (res.status === 201) {
-        console.log("created comment");
-      }
-    } catch (err) {
-      console.error("error logging in user", err);
-    }
+    const newComment = state.formData;
+
+    console.log("new comment is", newComment);
+
+    axios
+      .request(`http://localhost:3000/api/blogs/${id}/comments`, {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        },
+        data: newComment
+      })
+      .then(() => {
+        console.log("new blog added 🤖", newComment);
+        location.reload();
+        console.log(comments);
+      });
   };
 
   const handleChange = (e) => {
@@ -40,7 +49,6 @@ const BlogComments = () => {
     };
 
     setState({ formData });
-    console.log(formData);
   };
 
   return (
@@ -60,7 +68,7 @@ const BlogComments = () => {
           </div>
         )}
       </section>
-      <section className="main-content">
+      <section className="">
         <div>
           <div className="">
             <form onSubmit={handleSubmit}>

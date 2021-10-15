@@ -14,28 +14,22 @@ const BlogShow = () => {
   useEffect(() => {
     getBlog(id).then((data) => {
       setBlogInfo(data)
-      console.log(blogInfo)
     })
   }, [])
 
   useEffect(() => {
     getBlog(id).then((data) => {
       setCreatedBy(data.createdBy)
-      console.log('consolelog of created', data.createdBy)
     })
   }, [])
 
   useEffect(() => {
     getBlog(id).then((data) => {
       setCreatedBy(data.createdBy)
-      console.log('consolelog of created', data.createdBy)
     })
   }, [])
 
-  // use later to conditionally render the delete button depending on user login
-  // if the id of this user is exactly the same of the craeted id of this cheese
-  const isOwner = getPayLoad().sub === blogInfo.ObjectId
-  console.log('is owner is', isOwner)
+  const isOwner = getPayLoad().sub === createdBy._id
 
   const handleDelete = async () => {
     try {
@@ -81,11 +75,9 @@ const BlogShow = () => {
           <button key={tag}>{tag}</button>
         ))}
       </div> */}
-      {/* <h3 className='blog-summary'>
-        Created by : {blogInfo.createdBy.firstName}
-      </h3> */}
 
-      <div>Post by: {createdBy.username}</div>
+      <div>Posted by: {createdBy.username}</div>
+      <div>Posted on: {blogInfo.createdAt}</div>
 
       <BlogComments />
 

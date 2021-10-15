@@ -1,13 +1,20 @@
 import React from "react";
 
 const CommentCard = ({ id, text, createdAt }) => {
+  const d = new Date(createdAt);
+  const date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
+  console.log(d.toISOString());
+
   return (
-    <div key={id}>
+    <div className="comments-card" key={id}>
       <div>
-        <div>
-          <p>{id}</p>
-          <p>{text}</p>
-          <p>{createdAt}</p>
+        <div className="comments-text">
+          <div>
+            <p>{text}</p>
+          </div>
+          <div>
+            <p>created: {date}</p>
+          </div>
         </div>
       </div>
     </div>
