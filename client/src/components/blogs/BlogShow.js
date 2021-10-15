@@ -5,16 +5,20 @@ import BlogComments from "./BlogComments.js";
 import { getPayLoad } from "../../api/authFunctions.js";
 
 const BlogShow = () => {
-  const history = useHistory();
-  const { id } = useParams();
-  const [blogInfo, setBlogInfo] = useState([]);
-  const [createdBy, setCreatedBy] = useState([]);
+
+  const history = useHistory()
+  const { id } = useParams()
+  const [blogInfo, setBlogInfo] = useState([])
+  const [createdBy, setCreatedBy] = useState([])
+  const [date, setDate] = useState('')
 
   useEffect(() => {
     getBlog(id).then((data) => {
-      setBlogInfo(data);
-    });
-  }, []);
+      setBlogInfo(data)
+      setDate(data.createdAt)
+    })
+  }, [])
+
 
   useEffect(() => {
     getBlog(id).then((data) => {
@@ -22,19 +26,18 @@ const BlogShow = () => {
     });
   }, []);
 
-  useEffect(() => {
-    getBlog(id).then((data) => {
-      setCreatedBy(data.createdBy);
-    });
-  }, []);
+
+  // useEffect(() => {
+  //   getBlog(id).then((data) => {
+  //     setCreatedBy(data.createdBy)
+  //   })
+  // }, [])
+
+  console.log('THIS BLOG DATE', date)
+
 
   const isOwner = getPayLoad().userId === createdBy._id;
-  console.log("THE OWNER IS ", isOwner);
-  console.log("THE OWNER IS ", createdBy._id);
-  const check = window.atob(
-    "eyJ1c2VySWQiOiI2MTYxOWZkNTdlZGNlNjU4MDI2ZmM5ZmIiLCJpYXQiOjE2MzQzMjc3MDYsImV4cCI6MTYzNDM3MDkwNn0"
-  );
-  console.log("CHECK", check);
+
 
   const handleDelete = async () => {
     const blogIdToDelete = id;
@@ -50,10 +53,19 @@ const BlogShow = () => {
   const date = d.getHours() + ":" + d.getMinutes() + ", " + d.toDateString();
 
   return (
-    <div className="main-content">
-      <img src={blogInfo.headerImgUrl} className="blog-header-img" />
-      <h1 className="blog-title">{blogInfo.header}</h1>
-      <div className="social-links">
+
+    <div className='main-content'>
+      <img src={blogInfo.headerImgUrl} className='blog-header-img' />
+      <h1 className='blog-title'>{blogInfo.header}</h1>
+
+      <div className='blog-show-author'>
+        <span>by</span>
+        <h3>{createdBy.username}</h3>
+      </div>
+      <div className='blog-show-date'>{blogInfo.createdAt}</div>
+
+      <div className='social-links'>
+
         <a
           href={createdBy.linkedinLink}
           target="_blank"
@@ -85,8 +97,10 @@ const BlogShow = () => {
         ))}
       </div> */}
 
+
       <div>Posted by: {createdBy.username}</div>
       <div>Posted on: {date}</div>
+
 
       <BlogComments />
 
