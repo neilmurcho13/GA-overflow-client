@@ -23,12 +23,17 @@
   button {
     width: 100%;
     font-size: 2em;
-    border: none;
-    background: #e94d4d;
-    color: #ffffff;
+    border: 1px solid #e94d4d;
+    background: transparent;
+    color: #e94d4d;
     padding: 0.5em 0;
     border-radius: 3px;
     margin: 2em 0 5em 0;
     cursor: pointer;
+    transition: 0.3s ease;
+    &:hover {
+      background: #e94d4d;
+      color: #eee;
+    }
   }
 }

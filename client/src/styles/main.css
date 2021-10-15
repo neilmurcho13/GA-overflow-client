@@ -441,7 +441,7 @@ hr {
   margin: -50px auto 10px;
 }
 
-.blog-body {
+.blog-paragraph {
   margin: 5em 0;
   font-size: 1.5em;
   font-weight: 300;
@@ -688,13 +688,20 @@ body-img {
 .create-container button {
   width: 100%;
   font-size: 2em;
-  border: none;
-  background: #e94d4d;
-  color: #ffffff;
+  border: 1px solid #e94d4d;
+  background: transparent;
+  color: #e94d4d;
   padding: 0.5em 0;
   border-radius: 3px;
   margin: 2em 0 5em 0;
   cursor: pointer;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.create-container button:hover {
+  background: #e94d4d;
+  color: #eee;
 }
 
 .error-404 {
@@ -863,7 +870,7 @@ footer {
   display: -ms-grid;
   display: grid;
   padding: 3rem;
-  margin-top: 2em;
+  margin-top: 20em;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;

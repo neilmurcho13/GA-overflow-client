@@ -4,19 +4,38 @@ import { getToken } from "../../api/authFunctions";
 import { motion } from "framer-motion";
 
 const BlogNew = () => {
-  const [header, setHeader] = useState("");
-  const [headerImgUrl, setHeaderImgUrl] = useState("");
-  const [body, setBody] = useState("");
-  const [summary, setSummary] = useState("");
-  const [bodyImgUrl, setBodyImgUrl] = useState("");
+
+  const [header, setHeader] = useState('')
+  const [headerImgUrl, setHeaderImgUrl] = useState('')
+  const [para1, setPara1] = useState('')
+  const [para2, setPara2] = useState('')
+  const [para3, setPara3] = useState('')
+  const [para4, setPara4] = useState('')
+  const [para5, setPara5] = useState('')
+  const [summary, setSummary] = useState('')
+  const [bodyImgUrl, setBodyImgUrl] = useState('')
+
+
 
   const [isPending, setIsPending] = useState(false);
 
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const blog = { header, headerImgUrl, body, summary, bodyImgUrl };
+
+    e.preventDefault()
+    const blog = {
+      header,
+      headerImgUrl,
+      para1,
+      para2,
+      para3,
+      para4,
+      para5,
+      summary,
+      bodyImgUrl
+    }
+
 
     setIsPending(true);
 
@@ -58,12 +77,39 @@ const BlogNew = () => {
           onChange={(e) => setHeaderImgUrl(e.target.value)}
           placeholder="copy + paste image address url"
         />
-        <label>Blog body* </label>
+        <label>Blog paragraph 1* </label>
         <textarea
           required
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          placeholder="..."
+
+          value={para1}
+          onChange={(e) => setPara1(e.target.value)}
+          placeholder='...'
+        ></textarea>
+        <label>Blog paragraph 2 </label>
+        <textarea
+          value={para2}
+          onChange={(e) => setPara2(e.target.value)}
+          placeholder='...'
+        ></textarea>
+        <label>Blog paragraph 3 </label>
+        <textarea
+          value={para3}
+          onChange={(e) => setPara3(e.target.value)}
+          placeholder='...'
+        ></textarea>
+        <label>Blog paragraph 4</label>
+        <textarea
+          value={para4}
+          onChange={(e) => setPara4(e.target.value)}
+          placeholder='...'
+        ></textarea>
+        <label>Blog paragraph 5</label>
+        <textarea
+          value={para5}
+          onChange={(e) => setPara5(e.target.value)}
+          placeholder='...'
+
+ 
         ></textarea>
         <label>Blog sub-header* </label>
         <textarea
