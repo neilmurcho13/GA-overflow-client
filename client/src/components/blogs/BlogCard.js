@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const BlogCard = ({ id, header, headerImgUrl, body }) => {
+const BlogCard = ({ id, header, headerImgUrl, para1 }) => {
   return (
     <div className='blog-card' key={id}>
       <div className='info-container'>
@@ -14,7 +14,7 @@ const BlogCard = ({ id, header, headerImgUrl, body }) => {
           <h3>13th Oct 2021</h3>
         </div>
         <p className='blog-body-container'>
-          {body.split(' ').slice(0, 10).join(' ')}...
+          {para1.split(' ').slice(0, 10).join(' ')}...
         </p>
         <div className='links-container'>
           <Link to={`/blogs/${id}`} className='blog-card-btn'>

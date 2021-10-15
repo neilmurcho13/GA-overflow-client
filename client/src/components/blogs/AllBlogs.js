@@ -48,7 +48,7 @@ const AllBlogs = () => {
                 id={blog._id}
                 header={blog.header}
                 headerImgUrl={blog.headerImgUrl}
-                body={blog.body}
+                para1={blog.para1}
               />
             ))}
         </div>

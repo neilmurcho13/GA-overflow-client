@@ -32,6 +32,8 @@ const BlogShow = () => {
 
   console.log('THIS BLOG DATE', date)
 
+  console.log(blogInfo)
+
   const isOwner = getPayLoad().sub === createdBy._id
   console.log(isOwner)
 
@@ -73,7 +75,11 @@ const BlogShow = () => {
       </div>
       <h3 className='blog-summary'>{blogInfo.summary}</h3>
       <hr />
-      <p className='blog-body'>{blogInfo.body}</p>
+      <p className='blog-paragraph'>{blogInfo.para1}</p>
+      <p className='blog-paragraph'>{blogInfo.para2}</p>
+      <p className='blog-paragraph'>{blogInfo.para3}</p>
+      <p className='blog-paragraph'>{blogInfo.para4}</p>
+      <p className='blog-paragraph'>{blogInfo.para5}</p>
       <hr />
       <div className='body-img'>
         <img

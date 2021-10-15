@@ -14,6 +14,8 @@ const Home = () => {
     })
   }, [])
 
+  console.log('in home - ', blogs)
+
   return (
     <motion.div
       className='main-content'
@@ -48,7 +50,7 @@ const Home = () => {
                 id={blog._id}
                 header={blog.header}
                 headerImgUrl={blog.headerImgUrl}
-                body={blog.body}
+                para1={blog.para1}
               />
             ))}
         </div>
