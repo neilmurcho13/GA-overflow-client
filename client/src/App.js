@@ -12,6 +12,7 @@ import Register from './components/auth/Register.js'
 import Error404 from './components/common/Error404.js'
 import Navbar from './components/common/Navbar.js'
 import MyProfile from './components/common/myProfile.js'
+import AllBlogs from './components/blogs/AllBlogs.js'
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -25,6 +26,7 @@ const App = () => {
         <Route exact path='/login' component={Login} />
 
         <Route exact path='/' component={Home} />
+        <Route exact path='/blogs/all' component={AllBlogs} />
         <Route exact path='/blogs/new' component={BlogNew} />
         <Route exact path='/blogs/:id' component={BlogShow} />
         <Route exact path='/user/profile' component={MyProfile} />

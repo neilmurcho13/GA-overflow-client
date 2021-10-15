@@ -11,7 +11,9 @@ const Navbar = () => {
   return (
     <nav className='navbar'>
       <ul className='navbar-nav'>
-        <li className='nav-link'>All blogs</li>
+        <Link to='/blogs/all' className='nav-link'>
+          All blogs
+        </Link>
         <li className='nav-link'>Project Recruiter</li>
         <Link to='/' className='nav-link' onClick={handleLogout}>
           Logout
