@@ -1,11 +1,10 @@
 
-**GA Overflow - Readme**
+# GA Overflow - Readme
 
 We created a fullstack application with CRUD operations for General Assembly students, graduates and tutors to share and exchange advice about the course and coding.  
 
 
-## 
-**Description**
+## Description**
 
 The website was designed to provide a space for General Assembly students and alumni to share advice about coding and careers and to ask others working on the course for help. The site uses a blog style format for logged in users to publish posts and comment on posts from others. 
 
@@ -40,12 +39,10 @@ We developed the fullstack application using MERN stack, with the following tech
 An in-depth paragraph about your project and overview of use.
 
 
-## 
-**Getting Started**
+## Getting Started
 
 
-### 
-**Dependencies**
+### Dependencies
 
 You will need to check you have [node.js](https://www.codecademy.com/articles/react-setup-i) and [Express](https://expressjs.com/en/starter/installing.html) installed before the application will run.
 
@@ -63,8 +60,7 @@ The application uses the following dependencies:
 * Mongoose-unique-validator
 * Babel-eslint 
 
-### 
-**Installing**
+### Installing
 
 
 The GitHub repos for the application are available: 
@@ -74,10 +70,9 @@ Front end - [https://github.com/neilmurcho13/GA-overflow-client](https://github.
 Back end - [https://github.com/neilmurcho13/GA-overflow-backend](https://github.com/neilmurcho13/GA-overflow-backend)
 
 
-### 
-**Executing program**
+### Executing program
 
-
+Client
 
 * How to run the program
 * Step-by-step bullets
