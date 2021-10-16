@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
-  const [usersBlog, setUsersBlog] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
