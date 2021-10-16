@@ -26,6 +26,8 @@ We developed the fullstack application using MERN stack, with the following tech
 * React(.js) - client-side JavaScript framework
 * Node(.js) - JavaScript web server
 
+![Image of MERN stack](https://webimages.mongodb.com/_com_assets/cms/mern-stack-b9q1kbudz0.png?auto=format%2Ccompress)
+
 ## Getting Started
 
 
