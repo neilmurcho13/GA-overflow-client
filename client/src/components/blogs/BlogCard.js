@@ -1,23 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BlogCard = ({
-  id,
-  header,
-  headerImgUrl,
-  para1,
-  comments,
-  createdBy,
-  createdAt
+  id = '',
+  header = '',
+  headerImgUrl = '',
+  para1 = '',
+  comments = '',
+  createdBy = '',
+  createdAt = {},
 }) => {
   const d = new Date(createdAt);
-  const dtfUK = new Intl.DateTimeFormat("UK", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
+  const dtfUK = new Intl.DateTimeFormat('UK', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
   });
 
   return (
@@ -34,7 +34,7 @@ const BlogCard = ({
           <h3>{dtfUK.format(d)}</h3>
         </div>
         <p className="blog-body-container">
-          {para1.split(" ").slice(0, 10).join(" ")}...
+          {para1.split(' ').slice(0, 10).join(' ')}...
         </p>
         <div className="links-container">
           <Link to={`/blogs/${id}`} className="blog-card-btn">
@@ -54,7 +54,7 @@ const BlogCard = ({
         <img
           className="card-image"
           src={headerImgUrl}
-          style={{ width: "225px", height: "200px" }}
+          style={{ width: '225px', height: '200px' }}
         />
       </div>
     </div>
