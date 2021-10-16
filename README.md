@@ -47,7 +47,6 @@ The application uses the following dependencies:
 
 ### Installing
 
-
 The GitHub repos for the application are available: 
 
 Front end - [https://github.com/neilmurcho13/GA-overflow-client](https://github.com/neilmurcho13/GA-overflow-client)
@@ -57,8 +56,21 @@ Back end - [https://github.com/neilmurcho13/GA-overflow-backend](https://github.
 
 ### Executing program
 
-Client
+Both the client and the database need to be running at the same time. 
 
+The backend runs on port 3000.  
+
+Client - run from inside the client folder
+
+```
+yarn start:client
+```
+
+Backend 
+
+```
+yarn start
+```
 
 
 * How to run the program
@@ -71,8 +83,7 @@ code blocks for commands
 
 
 
-## 
-**Help**
+## Help
 
 Any advise for common problems or issues.
 
