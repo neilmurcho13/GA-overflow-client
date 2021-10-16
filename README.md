@@ -1,10 +1,12 @@
 
 
 # GA Overflow - Readme
+
 We created a fullstack application with CRUD operations for General Assembly students, graduates and tutors to share and exchange advice about the course and coding.  
 
 
 ## Description
+
 The website was designed to provide a space for General Assembly students and alumni to share advice about coding and careers and to ask others working on the course for help. The site uses a blog style format for logged in users to publish posts and comment on posts from others. 
 
 The application has the following features: 
@@ -26,10 +28,14 @@ We developed the fullstack application using MERN stack, with the following tech
 ![Image of MERN stack](https://webimages.mongodb.com/_com_assets/cms/mern-stack-b9q1kbudz0.png?auto=format%2Ccompress)
 
 ### App images
+
+Homepage 
+
 ![Homescreen](https://gcdn.pbrd.co/images/Mn6vSeePTD49.png?o=1)
 
 
 ## Getting Started
+
 You will need to check you have [node.js](https://www.codecademy.com/articles/react-setup-i) and [Express](https://expressjs.com/en/starter/installing.html) installed before the application will run. Following the linked installation guides.
 
 ### Installing
