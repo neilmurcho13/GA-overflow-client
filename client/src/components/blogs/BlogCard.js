@@ -1,23 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
-const BlogCard = ({ id, header, headerImgUrl, para1, comments }) => {
-
+const BlogCard = ({
+  id,
+  header,
+  headerImgUrl,
+  para1,
+  comments,
+  createdBy,
+  createdAt
+}) => {
   return (
     <div className="blog-card" key={id}>
       <div className="info-container">
         <h4 className="blog-card-title">{header}</h4>
         <div className="author-container">
           <span>by</span>
-          <h3>Dean Learner</h3>
+          <h3>
+            {createdBy.firstName} {createdBy.lastName}
+          </h3>
         </div>
         <div className="date-container">
-          <h3>13th Oct 2021</h3>
+          <h3>{createdAt}</h3>
         </div>
-        <p className='blog-body-container'>
-
-        
+        <p className="blog-body-container">
+          {para1.split(" ").slice(0, 10).join(" ")}...
         </p>
         <div className="links-container">
           <Link to={`/blogs/${id}`} className="blog-card-btn">
