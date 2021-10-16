@@ -7,39 +7,57 @@ import { getPayLoad } from "../../api/authFunctions.js";
 const BlogShow = () => {
   const history = useHistory();
   const { id } = useParams();
-  const [blogInfo, setBlogInfo] = useState([]);
-  const [createdBy, setCreatedBy] = useState([]);
-  const [date, setDate] = useState("");
+  const [blogInfo, setBlogInfo] = useState({
+    _id: "",
+    header: "",
+    headerImgUrl: "",
+    para1: "",
+    para2: "",
+    para3: "",
+    para4: "",
+    para5: "",
+    summary: "",
+    bodyImgUrl: "",
+    tags: [],
+    createdBy: {
+      username: "",
+      firstName: "",
+      lastName: "",
+      location: "",
+      githubLink: "",
+      linkedinLink: "",
+      _id: ""
+    },
+    createdAt: new Date(),
+    comments: []
+  });
 
   useEffect(() => {
+    console.log("calling use effect");
     getBlog(id).then((data) => {
+      console.log("DATA IS ", data);
       setBlogInfo(data);
-      setDate(data.createdAt);
     });
   }, []);
 
-  useEffect(() => {
-    getBlog(id).then((data) => {
-      setCreatedBy(data.createdBy);
-    });
-  }, []);
+  console.log("THIS BLOG DATE", blogInfo);
 
-  // useEffect(() => {
-  //   getBlog(id).then((data) => {
-  //     setCreatedBy(data.createdBy)
-  //   })
-  // }, [])
+  const d = new Date(blogInfo.createdAt);
+  const dtfUK = new Intl.DateTimeFormat("UK", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+  console.log("date format ", dtfUK.format(d));
 
-  console.log("THIS BLOG DATE", date);
-
-
-  const isOwner = getPayLoad().userId === createdBy._id;
-
+  const isOwner = getPayLoad().userId === blogInfo.createdBy._id;
 
   const handleDelete = async () => {
-    const blogIdToDelete = id;
     try {
-      await deleteBlog(blogIdToDelete);
+      await deleteBlog(id);
       history.push("/");
     } catch (err) {
       console.error(`Failed to delete blog id: ${id}`, err);
@@ -53,20 +71,20 @@ const BlogShow = () => {
 
       <div className="blog-show-author">
         <span>by</span>
-        <h3>{createdBy.username}</h3>
+        <h3>{blogInfo.createdBy.username}</h3>
       </div>
       <div className="blog-show-date">{blogInfo.createdAt}</div>
 
       <div className="social-links">
         <a
-          href={createdBy.linkedinLink}
+          href={blogInfo.createdBy.linkedinLink}
           target="_blank"
           rel="noopener noreferrer"
         >
           <i className="fab fa-linkedin"></i>
         </a>
         <a
-          href={createdBy.githubLink}
+          href={blogInfo.createdBy.githubLink}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -76,11 +94,11 @@ const BlogShow = () => {
       <h3 className="blog-summary">{blogInfo.summary}</h3>
       <hr />
 
-      <p className='blog-paragraph'>{blogInfo.para1}</p>
-      <p className='blog-paragraph'>{blogInfo.para2}</p>
-      <p className='blog-paragraph'>{blogInfo.para3}</p>
-      <p className='blog-paragraph'>{blogInfo.para4}</p>
-      <p className='blog-paragraph'>{blogInfo.para5}</p>
+      <p className="blog-paragraph">{blogInfo.para1}</p>
+      <p className="blog-paragraph">{blogInfo.para2}</p>
+      <p className="blog-paragraph">{blogInfo.para3}</p>
+      <p className="blog-paragraph">{blogInfo.para4}</p>
+      <p className="blog-paragraph">{blogInfo.para5}</p>
 
       <hr />
       <div className="body-img">
@@ -95,8 +113,8 @@ const BlogShow = () => {
         ))}
       </div> */}
 
-      <div>Posted by: {createdBy.username}</div>
-      <div>Posted on: {blogInfo.createdAt}</div>
+      {/* <div>Posted by: {blogInfo.createdBy.username}</div>
+      <div>Posted on: {blogInfo.createdAt}</div> */}
 
       <BlogComments />
 
