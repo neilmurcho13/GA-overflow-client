@@ -4,7 +4,7 @@
 We created a fullstack application with CRUD operations for General Assembly students, graduates and tutors to share and exchange advice about the course and coding.  
 
 
-## Description**
+## Description
 
 The website was designed to provide a space for General Assembly students and alumni to share advice about coding and careers and to ask others working on the course for help. The site uses a blog style format for logged in users to publish posts and comment on posts from others. 
 
@@ -83,8 +83,7 @@ command to run if program contains helper info
 
 
 
-## 
-**Authors**
+## Authors
 
 Contributors names and contact info
 
@@ -93,8 +92,7 @@ ex. Dominique Pizzie
 ex. [@DomPizzie](https://twitter.com/dompizzie)
 
 
-## 
-**Version History**
+## Version History
 
 
 
@@ -104,15 +102,13 @@ ex. [@DomPizzie](https://twitter.com/dompizzie)
 * 0.1
     * Initial Release
 
-## 
-**License**
+## License
 
 
 This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
 
 
-## 
-**Acknowledgments**
+## Acknowledgments
 
 Inspiration, code snippets, etc.
 
