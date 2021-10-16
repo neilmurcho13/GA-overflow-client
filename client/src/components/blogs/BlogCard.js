@@ -10,6 +10,16 @@ const BlogCard = ({
   createdBy,
   createdAt
 }) => {
+  const d = new Date(createdAt);
+  const dtfUK = new Intl.DateTimeFormat("UK", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit"
+  });
+
   return (
     <div className="blog-card" key={id}>
       <div className="info-container">
@@ -21,7 +31,7 @@ const BlogCard = ({
           </h3>
         </div>
         <div className="date-container">
-          <h3>{createdAt}</h3>
+          <h3>{dtfUK.format(d)}</h3>
         </div>
         <p className="blog-body-container">
           {para1.split(" ").slice(0, 10).join(" ")}...
