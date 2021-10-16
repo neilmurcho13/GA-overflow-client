@@ -21,23 +21,10 @@ The application has the following features:
 
 We developed the fullstack application using MERN stack, with the following technologies: 
 
-
-
 * MongoDB - document database for holding the blog post and user data
 * Express(.js) - web application framework for Node.js 
 * React(.js) - client-side JavaScript framework
 * Node(.js) - JavaScript web server
-
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
-
-
-An in-depth paragraph about your project and overview of use.
-
 
 ## Getting Started
 
@@ -47,8 +34,6 @@ An in-depth paragraph about your project and overview of use.
 You will need to check you have [node.js](https://www.codecademy.com/articles/react-setup-i) and [Express](https://expressjs.com/en/starter/installing.html) installed before the application will run.
 
 The application uses the following dependencies:  
-
-
 
 * Bcrypt
 * Cors
@@ -73,6 +58,8 @@ Back end - [https://github.com/neilmurcho13/GA-overflow-backend](https://github.
 ### Executing program
 
 Client
+
+
 
 * How to run the program
 * Step-by-step bullets
