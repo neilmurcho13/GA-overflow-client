@@ -37,6 +37,7 @@ You will need to check you have [node.js](https://www.codecademy.com/articles/re
 
 The application uses the following dependencies:  
 
+Client app 
 * Bcrypt
 * Cors
 * Dotenv
@@ -46,6 +47,28 @@ The application uses the following dependencies:
 * Mongoose-hidden
 * Mongoose-unique-validator
 * Babel-eslint 
+
+
+Backend app 
+
+
+   * babelcore 
+   * babel/plugin-transform-runtime
+   * babel/preset-env
+   * babel/preset-react 
+   * babel-loader 
+   * css-loader
+   * dotenv-webpack 
+   * file-loader 
+   * html-webpack-plugin
+   * sass
+   * sass-loader
+   * style-loader
+   * webpack
+   * webpack-cli
+   * webpack-dev-server
+
+
 
 ### Installing
 
