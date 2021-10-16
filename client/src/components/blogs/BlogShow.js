@@ -1,64 +1,64 @@
-import React, { useState, useEffect } from "react";
-import { useParams, Link, useHistory } from "react-router-dom";
-import { deleteBlog, getBlog } from "../../api/callerFunctions.js";
-import BlogComments from "./BlogComments.js";
-import { getPayLoad } from "../../api/authFunctions.js";
+import React, { useState, useEffect } from 'react';
+import { useParams, Link, useHistory } from 'react-router-dom';
+import { deleteBlog, getBlog } from '../../api/callerFunctions.js';
+import BlogComments from './BlogComments.js';
+import { getPayLoad } from '../../api/authFunctions.js';
 
 const BlogShow = () => {
   const history = useHistory();
   const { id } = useParams();
   const [blogInfo, setBlogInfo] = useState({
-    _id: "",
-    header: "",
-    headerImgUrl: "",
-    para1: "",
-    para2: "",
-    para3: "",
-    para4: "",
-    para5: "",
-    summary: "",
-    bodyImgUrl: "",
+    _id: '',
+    header: '',
+    headerImgUrl: '',
+    para1: '',
+    para2: '',
+    para3: '',
+    para4: '',
+    para5: '',
+    summary: '',
+    bodyImgUrl: '',
     tags: [],
     createdBy: {
-      username: "",
-      firstName: "",
-      lastName: "",
-      location: "",
-      githubLink: "",
-      linkedinLink: "",
-      _id: ""
+      username: '',
+      firstName: '',
+      lastName: '',
+      location: '',
+      githubLink: '',
+      linkedinLink: '',
+      _id: '',
     },
     createdAt: new Date(),
-    comments: []
+    comments: [],
   });
 
   useEffect(() => {
-    console.log("calling use effect");
+    console.log('calling use effect');
     getBlog(id).then((data) => {
-      console.log("DATA IS ", data);
+      console.log('DATA IS ', data);
       setBlogInfo(data);
     });
   }, []);
 
-  console.log("THIS BLOG DATE", blogInfo);
+  console.log('THIS BLOG DATE', blogInfo);
 
   const d = new Date(blogInfo.createdAt);
-  const dtfUK = new Intl.DateTimeFormat("UK", {
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit"
+  const dtfUK = new Intl.DateTimeFormat('UK', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
   });
-  console.log("date format ", dtfUK.format(d));
+  console.log('date format ', dtfUK.format(d));
 
   const isOwner = getPayLoad().userId === blogInfo.createdBy._id;
 
   const handleDelete = async () => {
     try {
       await deleteBlog(id);
-      history.push("/");
+      history.push('/');
     } catch (err) {
       console.error(`Failed to delete blog id: ${id}`, err);
     }
@@ -73,7 +73,9 @@ const BlogShow = () => {
         <span>by</span>
         <h3>{blogInfo.createdBy.username}</h3>
       </div>
-      <div className="blog-show-date">{blogInfo.createdAt}</div>
+      <div className="blog-show-date">
+        {typeof blogInfo.createdAt === 'string' ? dtfUK.format(d) : ''}
+      </div>
 
       <div className="social-links">
         <a
@@ -104,7 +106,7 @@ const BlogShow = () => {
       <div className="body-img">
         <img
           src={blogInfo.bodyImgUrl}
-          style={{ width: "100%", height: "30em", margin: "3em 0" }}
+          style={{ width: '100%', height: '30em', margin: '3em 0' }}
         />
       </div>
       {/* <div className="blog-tags">
@@ -113,12 +115,15 @@ const BlogShow = () => {
         ))}
       </div> */}
 
-      {/* <div>Posted by: {blogInfo.createdBy.username}</div>
-      <div>Posted on: {blogInfo.createdAt}</div> */}
+      <div>Posted by: {blogInfo.createdBy.username}</div>
+      <div>
+        Posted on:{' '}
+        {typeof blogInfo.createdAt === 'string' ? dtfUK.format(d) : ''}
+      </div>
 
       <BlogComments />
 
-      <Link to={"/"}>
+      <Link to={'/'}>
         <button className="home-btn">Home</button>
       </Link>
       {isOwner && (
