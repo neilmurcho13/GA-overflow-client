@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   const [blogs, setBlogs] = useState([]);
+  const [usersBlog, setUsersBlog] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const Home = () => {
     });
   }, []);
 
-  console.log('in home - ', blogs)
+  console.log("in home - ", blogs);
 
   return (
     <motion.div
@@ -50,12 +51,10 @@ const Home = () => {
                 id={blog._id}
                 header={blog.header}
                 headerImgUrl={blog.headerImgUrl}
-
                 para1={blog.para1}
-
-              
                 comments={blog.comments}
-
+                createdBy={blog.createdBy}
+                createdAt={blog.createdAt}
               />
             ))}
         </div>
