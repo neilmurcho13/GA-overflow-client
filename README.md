@@ -26,7 +26,7 @@ We developed the fullstack application using MERN stack, with the following tech
 ![Image of MERN stack](https://webimages.mongodb.com/_com_assets/cms/mern-stack-b9q1kbudz0.png?auto=format%2Ccompress)
 
 ### App images
-! [Homescreen](https://gcdn.pbrd.co/images/Mn6vSeePTD49.png?o=1)
+![Homescreen](https://gcdn.pbrd.co/images/Mn6vSeePTD49.png?o=1)
 
 
 ## Getting Started
